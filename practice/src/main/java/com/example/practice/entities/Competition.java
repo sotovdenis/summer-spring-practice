@@ -12,14 +12,14 @@ public class Competition extends BaseEntity {
     private String name;
     private CompetitionStatus competitionStatus;
 
-    protected Competition() {
-    }
     public Competition(Date startDate, Date endDate, String place, String name, CompetitionStatus competitionStatus) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.place = place;
         this.name = name;
         this.competitionStatus = competitionStatus;
+    }
+    protected Competition() {
     }
 
     @Column(name = "start_date")
@@ -40,7 +40,6 @@ public class Competition extends BaseEntity {
         this.endDate = endDate;
     }
 
-    @Basic
     @Column(name = "place")
     public String getPlace() {
         return place;
@@ -50,7 +49,6 @@ public class Competition extends BaseEntity {
         this.place = place;
     }
 
-    @Basic
     @Column(name = "name")
     public String getName() {
         return name;

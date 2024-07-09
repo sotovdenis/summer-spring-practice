@@ -8,13 +8,12 @@ public class Distance extends BaseEntity {
     private int meters;
     private Competition competition;
 
-    protected Distance() {
-    }
-
     public Distance(Style style, int meters, Competition competition) {
         this.style = style;
         this.meters = meters;
         this.competition = competition;
+    }
+    protected Distance() {
     }
 
     @Column(name = "style")
@@ -26,7 +25,6 @@ public class Distance extends BaseEntity {
         this.style = style;
     }
 
-    @Basic
     @Column(name = "meters")
     public int getMeters() {
         return meters;

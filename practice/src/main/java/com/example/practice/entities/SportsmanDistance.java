@@ -16,7 +16,6 @@ public class SportsmanDistance extends BaseEntity {
         this.entryTimeInMilliseconds = entryTimeInMilliseconds;
         this.resultTimeInMilliseconds = resultTimeInMilliseconds;
     }
-
     protected SportsmanDistance() {
     }
 
@@ -38,7 +37,6 @@ public class SportsmanDistance extends BaseEntity {
         this.distance = distance;
     }
 
-    @Basic
     @Column(name = "entry_time")
     public long getEntryTimeInMilliseconds() {
         return entryTimeInMilliseconds;

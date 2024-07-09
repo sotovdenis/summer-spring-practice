@@ -22,7 +22,6 @@ public class Sportsman extends Human {
     protected Sportsman() {
     }
 
-    @Basic
     @Column(name = "birth_date")
     public Date getBirthDate() {
         return birthDate;
@@ -50,7 +49,6 @@ public class Sportsman extends Human {
         this.reachDate = reachDate;
     }
 
-    @Basic
     @Column(name = "gender")
     public Gender getGender() {
         return gender;

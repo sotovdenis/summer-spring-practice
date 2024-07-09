@@ -17,7 +17,6 @@ public class Club extends BaseEntity {
     protected Club() {
     }
 
-    @Basic
     @Column(name = "town")
     public String getTown() {
         return town;
@@ -37,7 +36,6 @@ public class Club extends BaseEntity {
         this.coach = coach;
     }
 
-    @Basic
     @Column(name = "points")
     public int getPoints() {
         return points;

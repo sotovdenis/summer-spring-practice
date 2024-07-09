@@ -4,5 +4,6 @@ public enum Style {
     BUTTERFLY,
     BACKSTROKE,
     CRAWL,
-    BREASTSTROKE
+    BREASTSTROKE,
+    MEDLEY
 }

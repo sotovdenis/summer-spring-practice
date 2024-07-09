@@ -8,13 +8,14 @@ import jakarta.persistence.Entity;
 public class Coach extends Human {
     private int points;
 
-    protected Coach(){}
     public Coach(String surname, String name, String patronymic, int points){
         super(surname, name, patronymic);
         this.points = points;
     }
 
-    @Basic
+    protected Coach() {
+    }
+
     @Column(name = "points")
     public int getPoints() {
         return points;
