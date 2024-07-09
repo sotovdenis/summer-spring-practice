@@ -35,7 +35,6 @@ public class Distance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "competition")
     public Competition getCompetition() {
         return competition;
     }

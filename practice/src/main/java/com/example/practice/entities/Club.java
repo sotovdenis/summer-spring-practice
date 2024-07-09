@@ -27,7 +27,6 @@ public class Club extends BaseEntity {
     }
 
     @OneToOne(fetch = FetchType.EAGER)
-    @Column(name = "coach", unique = true)
     public Coach getCoach() {
         return coach;
     }
