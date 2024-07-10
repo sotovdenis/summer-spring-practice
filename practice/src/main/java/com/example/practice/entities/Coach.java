@@ -1,10 +1,10 @@
 package com.example.practice.entities;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "coach")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Coach extends Human {
     private int points;
 

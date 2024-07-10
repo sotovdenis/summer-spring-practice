@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "sportsman_distance")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SportsmanDistance extends BaseEntity {
     private Sportsman sportsman;
     private Distance distance;

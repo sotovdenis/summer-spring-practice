@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "competition")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Competition extends BaseEntity {
     private Date startDate;
     private Date endDate;

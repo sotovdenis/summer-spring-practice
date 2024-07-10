@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "sportsman")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Sportsman extends Human {
     private Date birthDate;
     private Gender gender;

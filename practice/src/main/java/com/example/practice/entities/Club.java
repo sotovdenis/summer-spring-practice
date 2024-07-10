@@ -3,6 +3,8 @@ package com.example.practice.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "club")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Club extends BaseEntity {
     private String town;
     private Coach coach;
