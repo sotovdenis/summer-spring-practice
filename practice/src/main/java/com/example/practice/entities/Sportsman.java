@@ -61,6 +61,7 @@ public class Sportsman extends Human {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "club_id", referencedColumnName = "id")
     public Club getClub() {
         return club;
     }

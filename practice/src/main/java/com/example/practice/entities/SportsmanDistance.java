@@ -22,6 +22,7 @@ public class SportsmanDistance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sportsman_id", referencedColumnName = "id")
     public Sportsman getSportsman() {
         return sportsman;
     }
@@ -31,6 +32,7 @@ public class SportsmanDistance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "distance_id", referencedColumnName = "id")
     public Distance getDistance() {
         return distance;
     }

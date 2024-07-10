@@ -29,6 +29,7 @@ public class Club extends BaseEntity {
     }
 
     @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "coach_id", referencedColumnName = "id")
     public Coach getCoach() {
         return coach;
     }
