@@ -17,6 +17,6 @@ public interface CoachRepository extends NameRepository<Coach> {
 
     //Coaches who have more points than needed
     @Query(value = "select c from Coach c where c.points > :points")
-    List<Coach> findAllByPoints(@Param(value = "points") Coach points);
+    List<Coach> findAllByPoints(@Param(value = "points") int points);
 
 }

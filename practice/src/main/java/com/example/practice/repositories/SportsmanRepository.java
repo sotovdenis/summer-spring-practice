@@ -1,5 +1,6 @@
 package com.example.practice.repositories;
 
+import com.example.practice.entities.Gender;
 import com.example.practice.entities.Sportsman;
 import jakarta.persistence.TemporalType;
 import org.hibernate.type.descriptor.DateTimeUtils;
@@ -24,8 +25,8 @@ public interface SportsmanRepository extends NameRepository<Sportsman> {
     @Query(value = "select s from Sportsman s "+
     "where s.birthDate = :birthDate and s.gender = :gender")
     List<Sportsman>  findAllByBirthDateAndGender(
-            @Param(value = "birthDate") Sportsman birthDate,
-            @Param(value = "gender") Sportsman gender);
+            @Param(value = "birthDate") Date birthDate,
+            @Param(value = "gender") Gender gender);
 
     List<Sportsman> findAllByReachDate(Date date);
 }
