@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface SportsmanDistanceRepository extends JpaRepository<SportsmanDistance, Integer> {
-
     //Check for new category for yhe sportsman
     @Query(value = "select sd from SportsmanDistance sd where sd.entryTimeInMilliseconds < :newCategoryTime")
     List<SportsmanDistance> findAllByEntryTimeInMilliseconds(@Param(value = "newCategoryTime") SportsmanDistance resultTime);

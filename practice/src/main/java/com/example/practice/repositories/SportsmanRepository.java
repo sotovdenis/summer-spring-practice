@@ -10,7 +10,11 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface SportsmanRepository extends JpaRepository<Sportsman, Integer> {
+public interface SportsmanRepository extends NameRepository<Sportsman> {
+
+    //Search for the sportsman who has overdue category
+    @Query(value = "select s from Sportsman s where s.reachDate + 730 > LOCAL_DATETIME")
+    List<Sportsman> findAllByReachDateOrderBySurname();
 
     //Search for the sportsman with entry birthday and gender to make a swimming queue
     @Query(value = "select s from Sportsman s "+

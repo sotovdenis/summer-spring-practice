@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CoachRepository extends JpaRepository <Coach, Integer> {
+public interface CoachRepository extends NameRepository<Coach> {
 
     List<Coach> findAllByName(String name);
+    List<Coach> findAllById(int id);
+
 
     //Coaches who have more points than needed
     @Query(value = "select c from Coach c where c.points > :points")
