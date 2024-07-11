@@ -14,9 +14,9 @@ public interface SportsmanRepository extends JpaRepository<Sportsman, Integer> {
 
     //Search for the sportsman with entry birthday and gender to make a swimming queue
     @Query(value = "select s from Sportsman s "+
-    "where s.birthDate = :bithDate and s.gender = :gender")
+    "where s.birthDate = :birthDate and s.gender = :gender")
     List<Sportsman>  findAllByBirthDateAndGender(
-            @Param(value = "birtDate") Sportsman birthDate,
+            @Param(value = "birthDate") Sportsman birthDate,
             @Param(value = "gender") Sportsman gender);
 
     List<Sportsman> findAllByReachDateOrderBySurname(Date date);

@@ -12,7 +12,7 @@ import java.util.List;
 public interface CompetitionRepository extends JpaRepository<Competition, Integer> {
 
     //Competitions that can give new category
-    @Query(value = "select c from Competition c where c.competitionStatus = :compettitionStatus")
-    List<Competition> findAllByCompetitionStatus(@Param(value = "competitionStatus") Competition competition);
+    @Query(value = "select c from Competition c where c.competitionStatus = :competitionStatus")
+    List<Competition> findAllByCompetitionStatus(@Param(value = "competitionStatus") Competition competitionStatus);
 
 }
