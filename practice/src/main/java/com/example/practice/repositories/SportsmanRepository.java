@@ -1,12 +1,10 @@
 package com.example.practice.repositories;
 
+import com.example.practice.entities.Category;
 import com.example.practice.entities.Gender;
 import com.example.practice.entities.Sportsman;
-import jakarta.persistence.TemporalType;
-import org.hibernate.type.descriptor.DateTimeUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,19 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface SportsmanRepository extends NameRepository<Sportsman> {
+public interface SportsmanRepository extends JpaRepository<Sportsman, Integer> {
 
-    //Search for the sportsman who has overdue category
-    @Query(value = "select s from Sportsman s where  s.reachDate > :currentDateMinusTwoYears ")
-    List<Sportsman> findAllByReachDateOrderBySurname(@Param(value = "currentDateMinusTwoYears")
-                                                     Date date);
+    Sportsman findSportsmanById(int id);
+    List<Sportsman> findAllByCategory(Category category);
 
     //Search for the sportsman with entry birthday and gender to make a swimming queue
-    @Query(value = "select s from Sportsman s "+
-    "where s.birthDate = :birthDate and s.gender = :gender")
-    List<Sportsman>  findAllByBirthDateAndGender(
-            @Param(value = "birthDate") Date birthDate,
-            @Param(value = "gender") Gender gender);
+    @Query(value = "select s from Sportsman s join SportsmanDistance sd where sd.entryTimeInMilliseconds = :entry and s.birthDate = :birthDate and s.gender = :gender")
+    List<Sportsman> findAllByEntryTimeAndBirthDate(@Param(value = "entry") long entry,
+                                                   @Param(value = "birthDate") Date birthDate,
+                                                   @Param(value = "gender") Gender gender);
 
-    List<Sportsman> findAllByReachDate(Date date);
 }

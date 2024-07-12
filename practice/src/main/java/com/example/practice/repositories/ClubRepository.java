@@ -12,7 +12,7 @@ import java.util.List;
 public interface ClubRepository extends JpaRepository <Club, Integer> {
 
     List<Club> findAllByTown(String town);
-    List<Club> findAllByCoach(Coach coach);
+    Club findClubByCoachId(int id);
     List<Club> findAllByPoints(int points);
     List<Club> findAllById(int id);
 
@@ -20,8 +20,4 @@ public interface ClubRepository extends JpaRepository <Club, Integer> {
     @Query(value = "select c from Club c where c.coach is null")
     List<Club> findClubByCoachIsNull();
 
-    //Clubs that should not dismissal the coach
-    @Query(value = "select c from Club c "+
-    "join c.coach co where co.points > c.points")
-    List<Club> findClubByCoachPoints();
 }

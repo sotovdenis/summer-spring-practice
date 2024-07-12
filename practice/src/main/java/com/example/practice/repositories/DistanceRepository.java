@@ -16,4 +16,5 @@ public interface DistanceRepository extends JpaRepository<Distance, Integer> {
     @Query(value = "select d from Distance d where d.style = :style and d.meters = :metres")
     List<Distance> findAllByStyleAndMeters(@Param(value = "style") Style style,
                                            @Param(value = "metres") int metres);
+
 }
