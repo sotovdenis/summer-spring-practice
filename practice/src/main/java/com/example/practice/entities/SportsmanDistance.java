@@ -22,7 +22,7 @@ public class SportsmanDistance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sportsman_id", referencedColumnName = "id")
+    @JoinColumn(name = "sportsman_id", referencedColumnName = "id", nullable = false)
     public Sportsman getSportsman() {
         return sportsman;
     }
@@ -32,7 +32,7 @@ public class SportsmanDistance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "distance_id", referencedColumnName = "id")
+    @JoinColumn(name = "distance_id", referencedColumnName = "id", nullable = false)
     public Distance getDistance() {
         return distance;
     }
@@ -41,7 +41,7 @@ public class SportsmanDistance extends BaseEntity {
         this.distance = distance;
     }
 
-    @Column(name = "entry_time")
+    @Column(name = "entry_time", nullable = false)
     public long getEntryTimeInMilliseconds() {
         return entryTimeInMilliseconds;
     }

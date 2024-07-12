@@ -24,7 +24,7 @@ public class Competition extends BaseEntity {
     protected Competition() {
     }
 
-    @Column(name = "start_date")
+    @Column(name = "start_date", nullable = false)
     public Date getStartDate() {
         return startDate;
     }
@@ -33,7 +33,7 @@ public class Competition extends BaseEntity {
         this.startDate = startDate;
     }
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = false)
     public Date getEndDate() {
         return endDate;
     }
@@ -42,7 +42,7 @@ public class Competition extends BaseEntity {
         this.endDate = endDate;
     }
 
-    @Column(name = "place")
+    @Column(name = "place", nullable = false)
     public String getPlace() {
         return place;
     }
@@ -51,7 +51,7 @@ public class Competition extends BaseEntity {
         this.place = place;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -60,7 +60,7 @@ public class Competition extends BaseEntity {
         this.name = name;
     }
 
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     public CompetitionStatus getCompetitionStatus() {
         return competitionStatus;
     }

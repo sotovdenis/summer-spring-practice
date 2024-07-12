@@ -16,7 +16,7 @@ public class Coach extends Human {
     protected Coach() {
     }
 
-    @Column(name = "points")
+    @Column(name = "points", nullable = false)
     public int getPoints() {
         return points;
     }

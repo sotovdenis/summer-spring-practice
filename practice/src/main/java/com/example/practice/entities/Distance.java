@@ -18,7 +18,7 @@ public class Distance extends BaseEntity {
     protected Distance() {
     }
 
-    @Column(name = "style")
+    @Column(name = "style", nullable = false)
     public Style getStyle() {
         return style;
     }
@@ -27,7 +27,7 @@ public class Distance extends BaseEntity {
         this.style = style;
     }
 
-    @Column(name = "meters")
+    @Column(name = "meters", nullable = false)
     public int getMeters() {
         return meters;
     }
@@ -37,7 +37,7 @@ public class Distance extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "competition_id", referencedColumnName = "id")
+    @JoinColumn(name = "competition_id", referencedColumnName = "id", nullable = false)
     public Competition getCompetition() {
         return competition;
     }

@@ -17,7 +17,7 @@ public abstract class Human extends BaseEntity {
     protected Human() {
     }
 
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     public String getSurname() {
         return surname;
     }
@@ -26,7 +26,7 @@ public abstract class Human extends BaseEntity {
         this.surname = surname;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -35,7 +35,7 @@ public abstract class Human extends BaseEntity {
         this.name = name;
     }
 
-    @Column(name = "patronymic")
+    @Column(name = "patronymic", nullable = false)
     public String getPatronymic() {
         return patronymic;
     }

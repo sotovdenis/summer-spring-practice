@@ -24,7 +24,7 @@ public class Sportsman extends Human {
     protected Sportsman() {
     }
 
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     public Date getBirthDate() {
         return birthDate;
     }
@@ -33,7 +33,7 @@ public class Sportsman extends Human {
         this.birthDate = birthDate;
     }
 
-    @Column(name = "category")
+    @Column(name = "category", nullable = false)
     public Category getCategory() {
         return category;
     }
@@ -42,7 +42,7 @@ public class Sportsman extends Human {
         this.category = category;
     }
 
-    @Column(name = "reach_date")
+    @Column(name = "reach_date", nullable = false)
     public Date getReachDate() {
         return reachDate;
     }
@@ -51,7 +51,7 @@ public class Sportsman extends Human {
         this.reachDate = reachDate;
     }
 
-    @Column(name = "gender")
+    @Column(name = "gender", nullable = false)
     public Gender getGender() {
         return gender;
     }
@@ -61,7 +61,7 @@ public class Sportsman extends Human {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id", referencedColumnName = "id")
+    @JoinColumn(name = "club_id", referencedColumnName = "id", nullable = false)
     public Club getClub() {
         return club;
     }
