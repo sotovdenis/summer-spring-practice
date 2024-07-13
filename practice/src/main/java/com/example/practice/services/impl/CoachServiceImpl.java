@@ -15,6 +15,11 @@ public class CoachServiceImpl implements CoachService {
     private CoachRepository coachRepository;
 
     @Override
+    public void addCoach(Coach coach) {
+        coachRepository.save(coach);
+    }
+
+    @Override
     public List<Coach> findAllByName(String name) {
         return coachRepository.findAllByName(name);
     }
