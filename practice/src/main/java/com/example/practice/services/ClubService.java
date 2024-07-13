@@ -9,7 +9,6 @@ public interface ClubService {
 
     void addClub(Club club);
 
-//    void deleteClubById(int id);
 //
 //    List<Club> findAllByTown(String town);
 //
@@ -19,6 +18,6 @@ public interface ClubService {
 //
 //    List<Club> findAllById(int id);
 
-    List<Club> findClubByCoachIsNull();
+    List<Club> findAllByCoachIsNull();
 
 }

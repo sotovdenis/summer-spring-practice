@@ -1,6 +1,7 @@
 package com.example.practice.services.impl;
 
 import com.example.practice.entities.Club;
+import com.example.practice.repositories.ClubRepository;
 import com.example.practice.repositories.impl.ClubRepositoryDao;
 import com.example.practice.services.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 public class ClubServiceImpl implements ClubService {
 
     @Autowired
-    private ClubRepositoryDao clubRepository;
+    private ClubRepository clubRepository;
 
     @Override
     public void addClub(Club club) {
@@ -45,8 +46,8 @@ public class ClubServiceImpl implements ClubService {
 //    }
 
     @Override
-    public List<Club> findClubByCoachIsNull() {
-        return clubRepository.findClubByCoachIsNull();
+    public List<Club> findAllByCoachIsNull() {
+        return clubRepository.findAllByCoachIsNull();
     }
 
 }
