@@ -24,5 +24,10 @@ public class ConsoleRunner implements CommandLineRunner {
         Club club = new Club("Sergiev-Posad", coach, 1200);
         clubService.addClub(club);
 
+        Club club2 = new Club("Sergiev-Posad", null, 1200);
+        clubService.addClub(club2);
+        clubService.findClubByCoachIsNull();
+
+
     }
 }
