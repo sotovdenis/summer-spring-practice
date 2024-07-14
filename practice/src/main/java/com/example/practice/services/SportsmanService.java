@@ -20,5 +20,12 @@ public interface SportsmanService {
 
     List<Sportsman> findAllByEntryTimeAndBirthDate(long entryTime, Date birthDate, Gender gender);
 
+    void updateSportsmanClubSetNull(int id);
+
+    void updateCategoryById(int id, Category category);
+
+    long findSportsmanResultTimeById(int id);
+
+    Date findSportsmanReachDateById(int id);
 
 }

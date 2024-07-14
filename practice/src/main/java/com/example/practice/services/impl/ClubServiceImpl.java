@@ -20,31 +20,6 @@ public class ClubServiceImpl implements ClubService {
         clubRepository.save(club);
     }
 
-//    @Override
-//    public void deleteClubById(int id) {
-//        clubRepository.deleteById(id);
-//    }
-//
-//    @Override
-//    public List<Club> findAllByTown(String town) {
-//        return clubRepository.findAllByTown(town);
-//    }
-//
-//    @Override
-//    public Club findAllByCoachId(int id) {
-//        return clubRepository.findClubByCoachId(id);
-//    }
-//
-//    @Override
-//    public List<Club> findAllByPoints(int points) {
-//        return clubRepository.findAllByPoints(points);
-//    }
-//
-//    @Override
-//    public List<Club> findAllById(int id) {
-//        return clubRepository.findAllById(id);
-//    }
-
     @Override
     public List<Club> findAllByCoachIsNull() {
         return clubRepository.findAllByCoachIsNull();

@@ -61,7 +61,7 @@ public class Sportsman extends Human {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "club_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "club_id", referencedColumnName = "id", nullable = true)
     public Club getClub() {
         return club;
     }

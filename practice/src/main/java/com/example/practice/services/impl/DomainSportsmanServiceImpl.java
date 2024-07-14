@@ -19,12 +19,12 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Override
     public void deleteSportsmanById(int id) {
-        sportsmanRepository.deleteById(id);
+        sportsmanRepository.deleteSportsman(id);
     }
 
     @Override
     public void addSportsman(Sportsman sportsman) {
-        sportsmanRepository.save(sportsman);
+        sportsmanRepository.addSportsman(sportsman);
     }
 
     @Override
@@ -40,5 +40,25 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
     @Override
     public List<Sportsman> findAllByEntryTimeAndBirthDate(long entryTime, Date birthDate, Gender gender) {
         return sportsmanRepository.findAllByEntryTimeAndBirthDate(entryTime, birthDate, gender);
+    }
+
+    @Override
+    public void updateSportsmanClubSetNull(int id) {
+        sportsmanRepository.updateSportsmanClubSetNull(id);
+    }
+
+    @Override
+    public void updateCategoryById(int id, Category category) {
+        sportsmanRepository.updateCategoryById(id, category);
+    }
+
+    @Override
+    public long findSportsmanResultTimeById(int id) {
+        return sportsmanRepository.findSportsmanResultTimeById(id);
+    }
+
+    @Override
+    public Date findSportsmanReachDateById(int id) {
+        return sportsmanRepository.findSportsmanReachDateById(id);
     }
 }
