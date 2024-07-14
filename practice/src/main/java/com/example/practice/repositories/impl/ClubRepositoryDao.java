@@ -30,6 +30,12 @@ public class ClubRepositoryDao implements ClubRepository {
     public void save(Club club) {
         entityManager.persist(club);
     }
+
+    @Transactional
+    public int getPointsById(int id) {
+        Club club = entityManager.find(Club.class, id);
+        return club.getPoints();
+    }
 }
 
 @Repository

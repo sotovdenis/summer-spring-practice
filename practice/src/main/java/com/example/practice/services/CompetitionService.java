@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface CompetitionService {
 
+    void addCompetition(Competition competition);
+
     List<Competition> findAllByCompetitionStatus(CompetitionStatus competitionStatus);
 
 }

@@ -10,5 +10,6 @@ public interface ClubRepository {
 
     List<Club> findAllByCoachIsNull();
     void save(Club club);
+    int getPointsById(int id);
 
 }

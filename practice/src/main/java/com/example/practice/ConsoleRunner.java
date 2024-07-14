@@ -2,9 +2,11 @@ package com.example.practice;
 
 
 import com.example.practice.entities.*;
+import com.example.practice.repositories.CoachRepository;
 import com.example.practice.repositories.SportsmanRepository;
 import com.example.practice.services.ClubService;
 import com.example.practice.services.CoachService;
+import com.example.practice.services.SportsmanService;
 import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +22,9 @@ public class ConsoleRunner implements CommandLineRunner {
     @Autowired
     private CoachService coachService;
     @Autowired
-    private SportsmanRepository sportsmanRepository;
+    private SportsmanService sportsmanRepository;
+    @Autowired
+    private CoachService coachRepository;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -44,5 +48,9 @@ public class ConsoleRunner implements CommandLineRunner {
         sportsmanRepository.addSportsman(sportsman);
         sportsmanRepository.updateCategoryById(1, Category.MS);
         sportsmanRepository.updateSportsmanClubSetNull(1);
+        sportsmanRepository.findSportsmanReachDateById(1);
+        System.out.println();
+        System.out.println(coachRepository.findCoachPointsById(1));
+        System.out.println();
     }
 }

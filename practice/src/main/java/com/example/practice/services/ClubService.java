@@ -11,4 +11,6 @@ public interface ClubService {
 
     List<Club> findAllByCoachIsNull();
 
+    int getPointsById(int id);
+
 }

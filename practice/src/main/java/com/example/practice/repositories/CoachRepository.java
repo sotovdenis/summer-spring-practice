@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CoachRepository extends JpaRepository<Coach, Integer> {
+public interface CoachRepository {
 
-    List<Coach> findAllByName(String name);
-    List<Coach> findAllById(int id);
+    void addCoach(Coach coach);
+    int findCoachPointsById(int id);
 
 }

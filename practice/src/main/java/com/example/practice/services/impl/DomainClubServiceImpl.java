@@ -24,4 +24,9 @@ public class DomainClubServiceImpl implements ClubService {
         return clubRepository.findAllByCoachIsNull();
     }
 
+    @Override
+    public int getPointsById(int id) {
+        return clubRepository.getPointsById(id);
+    }
+
 }
