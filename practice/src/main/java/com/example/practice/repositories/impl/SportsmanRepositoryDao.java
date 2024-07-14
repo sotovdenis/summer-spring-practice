@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public class SportsmanRepositoryDao implements SportsmanRepository {
 
     @Autowired
@@ -49,14 +50,17 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
         return baseSportsmanRepo.findAllByEntryTimeAndBirthDate(entry, birthDate, gender);
     }
 
-    @Override
+    @Transactional
     public void updateCategoryById(int id, Category category) {
-        baseSportsmanRepo.updateSportsmanCategoryById(category, id);
+        Sportsman sportsman = entityManager.find(Sportsman.class, id);
+        sportsman.setCategory(category);
+        entityManager.merge(sportsman);
     }
 
-    @Override
+    @Transactional
     public void updateSportsmanClubSetNull(int id) {
-        baseSportsmanRepo.updateSportsmanClubSetNull(id);
+        Sportsman sportsman = entityManager.find(Sportsman.class, id);
+        sportsman.setClub(null);
     }
 
     @Override
@@ -80,13 +84,6 @@ interface BaseSportsmanRepo extends JpaRepository<Sportsman, Integer> {
     List<Sportsman> findAllByEntryTimeAndBirthDate(@Param(value = "entry") long entry,
                                                    @Param(value = "birthDate") Date birthDate,
                                                    @Param(value = "gender") Gender gender);
-
-    @Query(value = "update Sportsman s set s.category = :category where s.id = :id ")
-    void updateSportsmanCategoryById(@Param(value = "category") Category category,
-                                     @Param(value = "id") int id);
-
-    @Query(value = "update Sportsman s set s.club = null where s.id = :id")
-    void updateSportsmanClubSetNull(@Param(value = "id") int id);
 
     @Query(value = "select sd.resultTimeInMilliseconds from SportsmanDistance sd join Sportsman s where s.id = :id")
     long findSportsmanResultTimeById(@Param(value = "id") int id);
