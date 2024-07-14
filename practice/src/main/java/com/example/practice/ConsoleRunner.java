@@ -40,7 +40,7 @@ public class ConsoleRunner implements CommandLineRunner {
         Gender gender = Gender.MALE;
         Category category = Category.CMS;
 
-        Sportsman sportsman = new Sportsman("Sotov", "Denis", "Ruslalovich", date, gender, category, club);
+        Sportsman sportsman = new Sportsman("Sotov", "Denis", "Ruslalovich", date, gender, category, date, club);
         sportsmanRepository.addSportsman(sportsman);
         sportsmanRepository.updateCategoryById(1, Category.MS);
         sportsmanRepository.updateSportsmanClubSetNull(1);

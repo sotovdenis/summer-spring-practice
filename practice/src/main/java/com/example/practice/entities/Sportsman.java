@@ -11,14 +11,15 @@ public class Sportsman extends Human {
     private Date birthDate;
     private Gender gender;
     private Category category;
-    private long reachDate;
+    private Date reachDate;
     private Club club;
 
-    public Sportsman(String surname, String name, String patronymic, Date birthDate, Gender gender, Category category, Club club) {
+    public Sportsman(String surname, String name, String patronymic, Date birthDate, Gender gender, Category category, Date reachDate, Club club) {
         super(surname, name, patronymic);
         this.birthDate = birthDate;
         this.gender = gender;
         this.category = category;
+        this.reachDate = reachDate;
         this.club = club;
     }
 
@@ -44,11 +45,11 @@ public class Sportsman extends Human {
     }
 
     @Column(name = "reach_date", nullable = false)
-    public long getReachDate() {
+    public Date getReachDate() {
         return reachDate;
     }
 
-    public void setReachDate(long reachDate) {
+    public void setReachDate(Date reachDate) {
         this.reachDate = reachDate;
     }
 
