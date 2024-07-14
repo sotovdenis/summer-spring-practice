@@ -8,5 +8,5 @@ import java.util.List;
 public interface DistanceService {
 
     List<Distance> findAllByStyleAndMeters(Style style, int metres);
-
+    void addDistance(Distance distance);
 }

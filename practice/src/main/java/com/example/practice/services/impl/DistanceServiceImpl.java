@@ -19,4 +19,9 @@ public class DistanceServiceImpl implements DistanceService {
     public List<Distance> findAllByStyleAndMeters(Style style, int metres) {
         return distanceRepository.findAllByStyleAndMeters(style, metres);
     }
+
+    @Override
+    public void addDistance(Distance distance) {
+        distanceRepository.addDistance(distance);
+    }
 }
