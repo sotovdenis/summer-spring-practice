@@ -4,9 +4,7 @@ package com.example.practice;
 import com.example.practice.entities.*;
 import com.example.practice.repositories.CoachRepository;
 import com.example.practice.repositories.SportsmanRepository;
-import com.example.practice.services.ClubService;
-import com.example.practice.services.CoachService;
-import com.example.practice.services.SportsmanService;
+import com.example.practice.services.*;
 import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +23,10 @@ public class ConsoleRunner implements CommandLineRunner {
     private SportsmanService sportsmanRepository;
     @Autowired
     private CoachService coachRepository;
+    @Autowired
+    private DistanceService distanceService;
+    @Autowired
+    private CompetitionService competitionService;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -52,5 +54,12 @@ public class ConsoleRunner implements CommandLineRunner {
         System.out.println();
         System.out.println(coachRepository.findCoachPointsById(1));
         System.out.println();
+        Competition competition = new Competition(new Date(123123123), new Date(234235235), "Ramenskoe", "imeni MiiTa", CompetitionStatus.DISTRICT);
+        competitionService.addCompetition(competition);
+        distanceService.addDistance(new Distance(Style.CRAWL, 50, competition ));
+        System.out.println(competitionService.findAllByCompetitionStatus(CompetitionStatus.DISTRICT).toString());
+        System.out.println(distanceService.findAllByStyleAndMeters(Style.CRAWL, 50).toString());
+
+
     }
 }
