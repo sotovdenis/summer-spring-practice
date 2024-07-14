@@ -27,6 +27,8 @@ public class ConsoleRunner implements CommandLineRunner {
     private DistanceService distanceService;
     @Autowired
     private CompetitionService competitionService;
+    @Autowired
+    private SportsmanDistanceService sportsmanDistanceService;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -56,9 +58,14 @@ public class ConsoleRunner implements CommandLineRunner {
         System.out.println();
         Competition competition = new Competition(new Date(123123123), new Date(234235235), "Ramenskoe", "imeni MiiTa", CompetitionStatus.DISTRICT);
         competitionService.addCompetition(competition);
-        distanceService.addDistance(new Distance(Style.CRAWL, 50, competition ));
+        Distance distance = new Distance(Style.CRAWL, 50, competition );
+        distanceService.addDistance(distance);
         System.out.println(competitionService.findAllByCompetitionStatus(CompetitionStatus.DISTRICT).toString());
         System.out.println(distanceService.findAllByStyleAndMeters(Style.CRAWL, 50).toString());
+        System.out.println();
+        SportsmanDistance sportsmanDistance = new SportsmanDistance(sportsman, distance, 45421341, 0);
+        sportsmanDistanceService.addSportsmanEntryTime(sportsmanDistance);
+        sportsmanDistanceService.setResultTime(1, 321412342);
 
 
     }

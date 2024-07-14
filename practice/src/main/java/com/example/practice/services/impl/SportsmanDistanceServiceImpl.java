@@ -18,4 +18,15 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
     public List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime) {
         return sportsmanDistanceRepository.findAllByResultTimeInMilliseconds(resultTime);
     }
+
+    @Override
+    public void addSportsmanEntryTime(SportsmanDistance sportsmanDistance) {
+        sportsmanDistanceRepository.addSportsmanEntryTime(sportsmanDistance);
+    }
+
+    @Override
+    public void setResultTime(int id, long resultTime) {
+        sportsmanDistanceRepository.setResultTime(id, resultTime);
+    }
+
 }

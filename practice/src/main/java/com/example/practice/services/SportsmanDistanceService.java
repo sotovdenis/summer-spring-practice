@@ -9,4 +9,7 @@ public interface SportsmanDistanceService {
 
     List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime);
 
+    void addSportsmanEntryTime(SportsmanDistance sportsmanDistance);
+
+    void setResultTime(int id, long resultTime);
 }
