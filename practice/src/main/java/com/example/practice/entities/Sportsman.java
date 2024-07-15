@@ -8,13 +8,13 @@ import java.util.Date;
 @Table(name = "sportsman")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Sportsman extends Human {
-    private Date birthDate;
+    private long birthDate;
     private Gender gender;
     private Category category;
-    private Date reachDate;
+    private long reachDate;
     private Club club;
 
-    public Sportsman(String surname, String name, String patronymic, Date birthDate, Gender gender, Category category, Date reachDate, Club club) {
+    public Sportsman(String surname, String name, String patronymic, long birthDate, Gender gender, Category category, long reachDate, Club club) {
         super(surname, name, patronymic);
         this.birthDate = birthDate;
         this.gender = gender;
@@ -27,11 +27,11 @@ public class Sportsman extends Human {
     }
 
     @Column(name = "birth_date", nullable = false)
-    public Date getBirthDate() {
+    public long getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(long birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -45,11 +45,11 @@ public class Sportsman extends Human {
     }
 
     @Column(name = "reach_date", nullable = false)
-    public Date getReachDate() {
+    public long getReachDate() {
         return reachDate;
     }
 
-    public void setReachDate(Date reachDate) {
+    public void setReachDate(long reachDate) {
         this.reachDate = reachDate;
     }
 
@@ -62,7 +62,7 @@ public class Sportsman extends Human {
         this.gender = gender;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id", referencedColumnName = "id", nullable = true)
     public Club getClub() {
         return club;

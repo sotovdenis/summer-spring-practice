@@ -23,7 +23,7 @@ public class ClubController {
         clubService.addClub(newClub);
     }
 
-    @PatchMapping("/clubs/transfer-coach")
+    @PatchMapping("/clubs/transfer")
     void transferCoach(@RequestBody TransferDto transferDto) {
         clubService.transferCoach(transferDto);
     }

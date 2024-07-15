@@ -8,5 +8,5 @@ import lombok.Setter;
 public class TransferDto {
     private int prevClubId;
     private int nextClubId;
-    private int coachId;
+    private int id;
 }

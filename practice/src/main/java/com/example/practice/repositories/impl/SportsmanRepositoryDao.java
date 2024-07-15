@@ -7,6 +7,7 @@ import com.example.practice.entities.Style;
 import com.example.practice.repositories.SportsmanRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.hibernate.type.descriptor.jdbc.SmallIntJdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -41,15 +42,15 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
         return entityManager.find(Sportsman.class, id);
     }
 
-    @Override
-    public List<Sportsman> findAllByCategory(Category category) {
-        return baseSportsmanRepo.findAllByCategory(category);
-    }
+//    @Override
+//    public List<Sportsman> findAllByCategory(Category category) {
+//        return baseSportsmanRepo.findAllByCategory(category);
+//    }
 
-    @Override
-    public List<Sportsman> findAllByEntryTimeAndBirthDate(long entry, Date birthDate, Gender gender) {
-        return baseSportsmanRepo.findAllByEntryTimeAndBirthDate(entry, birthDate, gender);
-    }
+//    @Override
+//    public List<Sportsman> findAllByEntryTimeAndBirthDate(long entry, Date birthDate, Gender gender) {
+//        return baseSportsmanRepo.findAllByEntryTimeAndBirthDate(entry, birthDate, gender);
+//    }
 
     @Transactional
     public void updateCategoryById(int id, Category category) {
@@ -64,19 +65,19 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
         sportsman.setClub(null);
     }
 
-    @Override
-    public long findSportsmanResultTimeById(int id) {
-        return baseSportsmanRepo.findSportsmanResultTimeById(id);
-    }
+//    @Override
+//    public long findSportsmanResultTimeById(int id) {
+//        return baseSportsmanRepo.findSportsmanResultTimeById(id);
+//    }
+//
+//    @Override
+//    public Date findSportsmanReachDateById(int id) {
+//        return baseSportsmanRepo.findSportsmanReachDateById(id);
+//    }
 
     @Override
-    public Date findSportsmanReachDateById(int id) {
-        return baseSportsmanRepo.findSportsmanReachDateById(id);
-    }
-
-    @Override
-    public List<Sportsman> findAllToMakeAQueue(Style style, int metres) {
-        return baseSportsmanRepo.findAllToMakeAQueue(style, metres);
+    public List<Sportsman> findAllToMakeAQueue(String style, int metres) {
+        return baseSportsmanRepo.findAllToMakeAQueue(Style.fromValue(style), metres);
     }
 }
 
@@ -98,14 +99,14 @@ interface BaseSportsmanRepo extends JpaRepository<Sportsman, Integer> {
     Date findSportsmanReachDateById(@Param(value = "id") int id);
 
 
-    //    select s.surname, s.name, s.patronymic, cl.town, sd.entry_time, d.style from sportsman s
+//        select s.surname, s.name, s.patronymic, cl.town, sd.entry_time, d.style from sportsman s
 //    join sportsman_distance sd on s.id = sd.sportsman_id
 //    join distance d on sd.distance_id = d.id
 //    left join club cl on s.club_id = cl.id
 //    where d.style = 3 and d.meters = 50
     @Query(value = "select s.surname, s.name, s.patronymic, cl.town, sd.entryTimeInMilliseconds, d.style from Sportsman s " +
             "join SportsmanDistance sd join Distance d left join Club cl where d.style = :style and d.meters = :meters")
-    List<Sportsman> findAllToMakeAQueue(@Param(value = "style") Style style,
+    List<Sportsman> findAllToMakeAQueue(@Param(value = "style") int style,
                                         @Param(value = "meters") int meters);
 
 }

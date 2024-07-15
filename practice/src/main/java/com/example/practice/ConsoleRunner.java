@@ -3,6 +3,7 @@ package com.example.practice;
 
 import com.example.practice.dtos.ClubDto;
 import com.example.practice.dtos.CoachDto;
+import com.example.practice.dtos.SportsmanDto;
 import com.example.practice.entities.*;
 import com.example.practice.repositories.CoachRepository;
 import com.example.practice.repositories.SportsmanRepository;
@@ -39,8 +40,6 @@ public class ConsoleRunner implements CommandLineRunner {
         ModelMapper modelMapper = new ModelMapper();
         Coach coach = new Coach("Mayorov","Evgeny","Egorovich", 1300);
 
-
-
         Club club = new Club("Sergiev-Posad", coach, 1200);
 
         CoachDto coachDto = modelMapper.map(coach, CoachDto.class);
@@ -48,7 +47,6 @@ public class ConsoleRunner implements CommandLineRunner {
 
         clubService.addClub(clubDto);
         coachService.addCoach(coachDto);
-//        clubService.addCoachToClub(1,1);
 
         Club club2 = new Club("Moscow", null, 2000);
 
@@ -56,18 +54,17 @@ public class ConsoleRunner implements CommandLineRunner {
         ClubDto clubDto2 = modelMapper.map(club2, ClubDto.class);
         clubService.addClub(clubDto2);
         clubService.findAllByCoachIsNull();
+
+        Date date = new Date();
+        date.setTime(12333423);
+
+//        String gender = Gender.MALE;
+//        String category = Category.CMS;
 //
-//        Date date = new Date();
-//        date.setTime(12333423);
 //
-//        Gender gender = Gender.MALE;
-//        Category category = Category.CMS;
-//
-//        Sportsman sportsman = new Sportsman("Sotov", "Denis", "Ruslalovich", date, gender, category, date, club);
-//        sportsmanRepository.addSportsman(sportsman);
-//        sportsmanRepository.updateCategoryById(1, Category.MS);
-//        sportsmanRepository.updateSportsmanClubSetNull(1);
-//        sportsmanRepository.findSportsmanReachDateById(1);
+//        Sportsman sportsman = new Sportsman("Sotov", "Denis", "Ruslalovich", date.getTime(), gender, category, date.getTime(), club);
+//        SportsmanDto sportsmanDto = modelMapper.map(sportsman, SportsmanDto.class);
+//        sportsmanRepository.addSportsman(sportsmanDto);
 //        System.out.println();
 //        System.out.println(coachRepository.findCoachPointsById(1));
 //        System.out.println();
@@ -79,8 +76,8 @@ public class ConsoleRunner implements CommandLineRunner {
 //        System.out.println(distanceService.findAllByStyleAndMeters(Style.CRAWL, 50).toString());
 //        System.out.println();
 //        SportsmanDistance sportsmanDistance = new SportsmanDistance(sportsman, distance, 45421341, 0);
-//        sportsmanDistanceService.addSportsmanEntryTime(sportsmanDistance);
-//        sportsmanDistanceService.setResultTime(1, 321412342);
+////        sportsmanDistanceService.addSportsmanEntryTime(sportsmanDistance);
+////        sportsmanDistanceService.setResultTime(1, 321412342);
 
 
     }

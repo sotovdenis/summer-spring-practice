@@ -4,6 +4,7 @@ import com.example.practice.dtos.ClubDto;
 import com.example.practice.dtos.AddCoachToClubDto;
 import com.example.practice.dtos.TransferDto;
 import com.example.practice.entities.Club;
+import com.example.practice.entities.Coach;
 import com.example.practice.exeptions.ClubHasCoachException;
 import com.example.practice.exeptions.CoachPointsException;
 import com.example.practice.exeptions.NoCoachException;
@@ -30,7 +31,11 @@ public class DomainClubServiceImpl implements ClubService {
 
     @Override
     public void addClub(ClubDto clubDto) {
+        Coach coach = coachRepository.findCoachById(clubDto.getCoachId());
+
         Club club = modelMapper.map(clubDto, Club.class);
+
+        club.setCoach(coach);
         clubRepository.save(club);
     }
 
@@ -63,7 +68,7 @@ public class DomainClubServiceImpl implements ClubService {
 
         int prevClubId = transferDto.getPrevClubId();
         int nextClubId = transferDto.getNextClubId();
-        int coachId = transferDto.getCoachId();
+        int coachId = transferDto.getId();
 
 
         if (clubRepository.findClubById(prevClubId).getCoach() != null) {

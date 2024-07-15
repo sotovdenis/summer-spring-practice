@@ -5,6 +5,7 @@ import com.example.practice.repositories.SportsmanDistanceRepository;
 import com.example.practice.services.SportsmanDistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
     }
 
     @Override
+    @Transactional
     public void addSportsmanEntryTime(SportsmanDistance sportsmanDistance) {
         sportsmanDistanceRepository.addSportsmanEntryTime(sportsmanDistance);
     }
