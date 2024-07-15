@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class ClubDto {
     private String town;
-    private Coach coach;
+    private CoachDto coachId;
     private int points;
 }

@@ -24,7 +24,6 @@ public class ClubRepositoryDao implements ClubRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
-    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public List<Club> findAllByCoachIsNull() {
@@ -44,17 +43,16 @@ public class ClubRepositoryDao implements ClubRepository {
 
     @Override
     @Transactional
-    public Club findClubByID(int id) {
+    public Club findClubById(int id) {
         return entityManager.find(Club.class, id);
     }
 
-    @Override
-    public void addCoach(Coach coach, int clubId) {
-        Club club = entityManager.find(Club.class, clubId);
-        ClubDto clubDto = modelMapper.map(club, ClubDto.class);
-        Coach coachDto = modelMapper.map(coach, Coach.class);
-        clubDto.setCoach(coachDto);
-    }
+//    @Override
+//    public void updateCoach(int clubId, int coachId) {
+//        Club club = entityManager.find(Club.class, clubId);
+//        Coach coach = entityManager.find(Coach.class, coachId);
+//        club.setCoach(coach);
+//    }
 
 }
 

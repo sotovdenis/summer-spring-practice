@@ -1,9 +1,9 @@
 package com.example.practice.services.impl;
 
 import com.example.practice.dtos.ClubDto;
-import com.example.practice.dtos.CoachDto;
+import com.example.practice.dtos.AddCoachToClubDto;
+import com.example.practice.dtos.TransferDto;
 import com.example.practice.entities.Club;
-import com.example.practice.entities.Coach;
 import com.example.practice.exeptions.ClubHasCoachException;
 import com.example.practice.exeptions.CoachPointsException;
 import com.example.practice.exeptions.NoCoachException;
@@ -35,9 +35,14 @@ public class DomainClubServiceImpl implements ClubService {
     }
 
     @Override
-    public void addCoach(CoachDto coach, int clubId) {
-        Coach coachToAdd = modelMapper.map(coach, Coach.class);
-        clubRepository.addCoach(coachToAdd, clubId);
+    public void addCoachToClub(AddCoachToClubDto addCoachToClubDto) {
+        int clubId = addCoachToClubDto.getClubId();
+        int coachId = addCoachToClubDto.getCoachId();
+
+        Club club =  clubRepository.findClubById(clubId);
+        club.setCoach(coachRepository.findCoachById(coachId));
+
+        clubRepository.save(club);
     }
 
     @Override
@@ -54,13 +59,18 @@ public class DomainClubServiceImpl implements ClubService {
     }
 
     @Override
-    public void transferCoach(int prevClubId, int nextClubId, int coachId) {
+    public void transferCoach(TransferDto transferDto) {
 
-        if (clubRepository.findClubByID(prevClubId).getCoach() == null) {
+        int prevClubId = transferDto.getPrevClubId();
+        int nextClubId = transferDto.getNextClubId();
+        int coachId = transferDto.getCoachId();
+
+
+        if (clubRepository.findClubById(prevClubId).getCoach() != null) {
             throw new NoCoachException(coachId);
         }
 
-        if (clubRepository.findClubByID(nextClubId).getCoach() != null) {
+        if (clubRepository.findClubById(nextClubId).getCoach() != null) {
             throw new ClubHasCoachException(nextClubId);
         }
 
@@ -68,7 +78,10 @@ public class DomainClubServiceImpl implements ClubService {
             throw new CoachPointsException(coachId);
         }
 
-        clubRepository.findClubByID(prevClubId).setCoach(null);
-        clubRepository.addCoach(coachRepository.findCoachById(coachId), nextClubId);
+        clubRepository.findClubById(prevClubId).setCoach(null);
+        Club club =  clubRepository.findClubById(nextClubId);
+        club.setCoach(coachRepository.findCoachById(coachId));
+
+        clubRepository.save(club);
     }
 }

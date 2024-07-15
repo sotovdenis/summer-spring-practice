@@ -11,8 +11,13 @@ import java.util.List;
 public interface ClubRepository {
 
     List<Club> findAllByCoachIsNull();
+
     void save(Club club);
+
     int getPointsById(int id);
-    Club findClubByID(int id);
-    void addCoach(Coach coach, int clubId);
+
+    Club findClubById(int id);
+
+//    void updateCoach(int clubId, int coachId);
+
 }
