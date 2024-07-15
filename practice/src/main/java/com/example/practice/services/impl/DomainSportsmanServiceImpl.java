@@ -3,9 +3,13 @@ package com.example.practice.services.impl;
 import com.example.practice.entities.Category;
 import com.example.practice.entities.Gender;
 import com.example.practice.entities.Sportsman;
+import com.example.practice.entities.Style;
+import com.example.practice.repositories.DistanceRepository;
+import com.example.practice.repositories.SportsmanDistanceRepository;
 import com.example.practice.repositories.SportsmanRepository;
 import com.example.practice.services.SportsmanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -60,5 +64,10 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
     @Override
     public Date findSportsmanReachDateById(int id) {
         return sportsmanRepository.findSportsmanReachDateById(id);
+    }
+
+    @Override
+    public List<Sportsman> findAllToMakeAQueue(Style style, int metres) {
+        return sportsmanRepository.findAllToMakeAQueue(style, metres);
     }
 }

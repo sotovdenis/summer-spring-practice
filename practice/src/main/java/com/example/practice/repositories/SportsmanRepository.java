@@ -3,6 +3,8 @@ package com.example.practice.repositories;
 import com.example.practice.entities.Category;
 import com.example.practice.entities.Gender;
 import com.example.practice.entities.Sportsman;
+import com.example.practice.entities.Style;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -20,4 +22,5 @@ public interface SportsmanRepository {
     void updateSportsmanClubSetNull(int id);
     long findSportsmanResultTimeById(int id);
     Date findSportsmanReachDateById(int id);
+    List<Sportsman> findAllToMakeAQueue(Style style, int metres);
 }

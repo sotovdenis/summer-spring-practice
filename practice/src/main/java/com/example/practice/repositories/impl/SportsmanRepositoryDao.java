@@ -3,6 +3,7 @@ package com.example.practice.repositories.impl;
 import com.example.practice.entities.Category;
 import com.example.practice.entities.Gender;
 import com.example.practice.entities.Sportsman;
+import com.example.practice.entities.Style;
 import com.example.practice.repositories.SportsmanRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -72,6 +73,11 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
     public Date findSportsmanReachDateById(int id) {
         return baseSportsmanRepo.findSportsmanReachDateById(id);
     }
+
+    @Override
+    public List<Sportsman> findAllToMakeAQueue(Style style, int metres) {
+        return baseSportsmanRepo.findAllToMakeAQueue(style, metres);
+    }
 }
 
 @Repository
@@ -90,5 +96,16 @@ interface BaseSportsmanRepo extends JpaRepository<Sportsman, Integer> {
 
     @Query(value = "select s.reachDate from Sportsman s where s.id = :id")
     Date findSportsmanReachDateById(@Param(value = "id") int id);
+
+
+    //    select s.surname, s.name, s.patronymic, cl.town, sd.entry_time, d.style from sportsman s
+//    join sportsman_distance sd on s.id = sd.sportsman_id
+//    join distance d on sd.distance_id = d.id
+//    left join club cl on s.club_id = cl.id
+//    where d.style = 3 and d.meters = 50
+    @Query(value = "select s.surname, s.name, s.patronymic, cl.town, sd.entryTimeInMilliseconds, d.style from Sportsman s " +
+            "join SportsmanDistance sd join Distance d left join Club cl where d.style = :style and d.meters = :meters")
+    List<Sportsman> findAllToMakeAQueue(@Param(value = "style") Style style,
+                                        @Param(value = "meters") int meters);
 
 }

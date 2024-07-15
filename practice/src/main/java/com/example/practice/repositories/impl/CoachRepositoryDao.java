@@ -1,5 +1,6 @@
 package com.example.practice.repositories.impl;
 
+import com.example.practice.dtos.CoachDto;
 import com.example.practice.entities.Coach;
 import com.example.practice.repositories.CoachRepository;
 import jakarta.persistence.EntityManager;
@@ -17,6 +18,11 @@ public class CoachRepositoryDao implements CoachRepository {
     public int findCoachPointsById(int id) {
         Coach coach = entityManager.find(Coach.class, id);
         return coach.getPoints();
+    }
+
+    @Override
+    public Coach findCoachById(int id) {
+        return entityManager.find(Coach.class, id);
     }
 
     @Transactional
