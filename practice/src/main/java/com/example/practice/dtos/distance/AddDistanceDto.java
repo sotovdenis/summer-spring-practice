@@ -1,13 +1,13 @@
 package com.example.practice.dtos;
 
-import lombok.AllArgsConstructor;
+import com.example.practice.entities.Competition;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
-@AllArgsConstructor
-public class QueueDto {
+@Setter
+public class AddDistanceDto {
     private int style;
     private int meters;
+    private int competitionId;
 }
