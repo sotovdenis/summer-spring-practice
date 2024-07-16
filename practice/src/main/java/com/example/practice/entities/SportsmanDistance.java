@@ -18,6 +18,7 @@ public class SportsmanDistance extends BaseEntity {
         this.entryTimeInMilliseconds = entryTimeInMilliseconds;
         this.resultTimeInMilliseconds = resultTimeInMilliseconds;
     }
+
     protected SportsmanDistance() {
     }
 

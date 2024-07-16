@@ -1,5 +1,6 @@
 package com.example.practice.repositories;
 
+import com.example.practice.dtos.AddSportsmanDistanceDto;
 import com.example.practice.entities.SportsmanDistance;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,8 +15,10 @@ public interface SportsmanDistanceRepository {
     //Check for new category for the sportsman
     List<SportsmanDistance> findAllByResultTimeInMilliseconds(long newTime);
 
-    void addSportsmanEntryTime(SportsmanDistance sportsmanDistance);
-
     void setResultTime(int id, long resultTime);
+
+    void addSportsmenDistance(SportsmanDistance sportsmanDistance);
+
+    SportsmanDistance findSportsmanDistanceById(int id);
 
 }

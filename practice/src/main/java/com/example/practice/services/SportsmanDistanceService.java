@@ -1,7 +1,8 @@
 package com.example.practice.services;
 
+import com.example.practice.dtos.AddSportsmanDistanceDto;
+import com.example.practice.dtos.AddSportsmanResultTimeDto;
 import com.example.practice.entities.SportsmanDistance;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -9,7 +10,8 @@ public interface SportsmanDistanceService {
 
     List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime);
 
-    void addSportsmanEntryTime(SportsmanDistance sportsmanDistance);
+    void setResultTime(AddSportsmanResultTimeDto addSportsmanResultTimeDto);
 
-    void setResultTime(int id, long resultTime);
+    void addSportsmanDistance(AddSportsmanDistanceDto addSportsmanDistanceDto);
+
 }

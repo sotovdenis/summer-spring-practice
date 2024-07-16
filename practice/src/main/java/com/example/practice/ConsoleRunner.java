@@ -1,6 +1,7 @@
 package com.example.practice;
 
 
+import com.example.practice.dtos.AddCompetitionDto;
 import com.example.practice.dtos.ClubDto;
 import com.example.practice.dtos.CoachDto;
 import com.example.practice.dtos.SportsmanDto;
@@ -59,11 +60,16 @@ public class ConsoleRunner implements CommandLineRunner {
         Date date = new Date();
         date.setTime(12333423);
 
-        Gender gender = Gender.MALE;
-        Category category = Category.CMS;
+//        Gender gender = Gender.MALE;
+//        Category category = Category.CMS;
 
 
 //        Sportsman sportsman = new Sportsman("Sotov", "Denis", "Ruslalovich", date.getTime(), gender, category, date.getTime(), club);
+//        SportsmanDto sportsmanDto = modelMapper.map(sportsman, SportsmanDto.class);
+//        sportsmanDto.setClubId(1);
+//        sportsmanRepository.addSportsman(sportsmanDto);
+
+
 //        SportsmanDto sportsmanDto = new SportsmanDto
 //                ("Sotov", "Denis", "Ruslalovich", "12312313", "MALE", "CMS", "1231233", 1);
 //        sportsmanRepository.addSportsman(sportsmanDto);
@@ -71,7 +77,8 @@ public class ConsoleRunner implements CommandLineRunner {
 //        System.out.println(coachRepository.findCoachPointsById(1));
 //        System.out.println();
         Competition competition = new Competition(12123323, 123123, "Ramenskoe", "imeni MiiTa", CompetitionStatus.WORLD);
-        competitionService.addCompetition(competition);
+        AddCompetitionDto addCompetitionDto = modelMapper.map(competition, AddCompetitionDto.class);
+        competitionService.addCompetition(addCompetitionDto);
 //        Distance distance = new Distance(Style.CRAWL, 50, competition );
 //        distanceService.addDistance(distance);
 //        System.out.println(competitionService.findAllByCompetitionStatus(CompetitionStatus.DISTRICT).toString());

@@ -28,14 +28,19 @@ public class SportsmanDistanceRepositoryDao implements SportsmanDistanceReposito
     }
 
     @Transactional
-    public void addSportsmanEntryTime(SportsmanDistance sportsmanDistance) {
+    public void setResultTime(int id, long resultTime) {
+        SportsmanDistance sportsmanDistance = entityManager.find(SportsmanDistance.class, id);
+        sportsmanDistance.setResultTimeInMilliseconds(resultTime);
+    }
+
+    @Transactional
+    public void addSportsmenDistance(SportsmanDistance sportsmanDistance) {
         entityManager.persist(sportsmanDistance);
     }
 
     @Transactional
-    public void setResultTime(int id, long resultTime) {
-        SportsmanDistance sportsmanDistance = entityManager.find(SportsmanDistance.class, id);
-        sportsmanDistance.setResultTimeInMilliseconds(resultTime);
+    public SportsmanDistance findSportsmanDistanceById(int id) {
+        return entityManager.find(SportsmanDistance.class, id);
     }
 
 }

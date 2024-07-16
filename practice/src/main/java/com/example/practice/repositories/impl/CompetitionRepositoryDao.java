@@ -28,6 +28,11 @@ public class CompetitionRepositoryDao implements CompetitionRepository {
         return baseCompetitionRepo.findAllByCompetitionStatus(competitionStatus);
     }
 
+    @Override
+    public Competition findCompetitionById(int id) {
+        return entityManager.find(Competition.class, id);
+    }
+
     @Transactional
     public void addCompetition(Competition competition){
         entityManager.persist(competition);

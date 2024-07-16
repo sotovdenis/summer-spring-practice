@@ -17,4 +17,6 @@ public interface DistanceRepository {
     //Search for sportsman with his entries
     List<Distance> findAllByStyleAndMeters(Style style, int metres);
 
+    Distance findDistanceById(int id);
+
 }

@@ -32,6 +32,11 @@ public class DistanceRepositoryDao implements DistanceRepository {
     public List<Distance> findAllByStyleAndMeters(Style style, int metres) {
         return baseDistanceRepo.findAllByStyleAndMeters(style, metres);
     }
+
+    @Override
+    public Distance findDistanceById(int id) {
+        return entityManager.find(Distance.class, id);
+    }
 }
 
 @Repository
