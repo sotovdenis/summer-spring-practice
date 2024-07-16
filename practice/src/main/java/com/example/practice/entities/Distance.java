@@ -36,7 +36,7 @@ public class Distance extends BaseEntity {
         this.meters = meters;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "competition_id", referencedColumnName = "id", nullable = false)
     public Competition getCompetition() {
         return competition;

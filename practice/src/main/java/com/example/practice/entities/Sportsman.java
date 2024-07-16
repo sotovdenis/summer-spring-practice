@@ -62,7 +62,7 @@ public class Sportsman extends Human {
         this.gender = gender;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id", referencedColumnName = "id", nullable = true)
     public Club getClub() {
         return club;

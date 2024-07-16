@@ -28,7 +28,7 @@ public class Club extends BaseEntity {
         this.town = town;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "coach_id", referencedColumnName = "id")
     public Coach getCoach() {
         return coach;

@@ -7,6 +7,7 @@ import com.example.practice.dtos.sportsman.SportsmanDto;
 import com.example.practice.entities.*;
 import com.example.practice.exeptions.CategoryException;
 import com.example.practice.exeptions.NoCoachException;
+import com.example.practice.exeptions.NoSportsmanException;
 import com.example.practice.repositories.ClubRepository;
 import com.example.practice.repositories.CompetitionRepository;
 import com.example.practice.repositories.SportsmanDistanceRepository;
@@ -98,7 +99,7 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         int sportsmanId = transferDto.getId();
 
         if (sportsmanRepository.findSportsmanById(sportsmanId) == null) {
-            throw new NoCoachException(sportsmanId);
+            throw new NoSportsmanException(sportsmanId);
         }
 
         clubRepository.findClubById(prevClubId).setCoach(null);

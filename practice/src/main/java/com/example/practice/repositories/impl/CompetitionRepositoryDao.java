@@ -24,11 +24,6 @@ public class CompetitionRepositoryDao implements CompetitionRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Competition> findAllByCompetitionStatus(CompetitionStatus competitionStatus) {
-        return baseCompetitionRepo.findAllByCompetitionStatus(competitionStatus);
-    }
-
-    @Override
     public Competition findCompetitionById(int id) {
         return entityManager.find(Competition.class, id);
     }

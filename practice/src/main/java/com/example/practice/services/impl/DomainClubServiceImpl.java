@@ -66,7 +66,7 @@ public class DomainClubServiceImpl implements ClubService {
         int coachId = transferDto.getId();
 
 
-        if (clubRepository.findClubById(prevClubId).getCoach() != null) {
+        if (clubRepository.findClubById(prevClubId).getCoach() == null) {
             throw new NoCoachException(coachId);
         }
 
