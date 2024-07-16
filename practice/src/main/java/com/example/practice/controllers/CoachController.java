@@ -18,9 +18,4 @@ public class CoachController {
     void addCoach(@RequestBody CoachDto addCoach){
         coachService.addCoach(addCoach);
     }
-//    @PostMapping("")
-//    public void addCoach(CoachDto coach){
-//        Coach coachToAdd = modelMapper.map(coach, Coach.class);
-//        coachService.addCoach(coachToAdd);
-//    }
 }

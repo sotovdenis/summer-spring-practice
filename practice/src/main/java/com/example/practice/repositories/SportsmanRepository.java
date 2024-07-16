@@ -9,17 +9,9 @@ import java.util.List;
 @Repository
 public interface SportsmanRepository {
 
-    void deleteSportsman(int id);
-
     void addSportsman(Sportsman sportsman);
 
     Sportsman findSportsmanById(int id);
 
-    //    List<Sportsman> findAllByCategory(Category category);
-//    List<Sportsman> findAllByEntryTimeAndBirthDate(long entry, Date birthDate, Gender gender);
-//    void updateCategoryById(int id, Category category);
-//    void updateSportsmanClubSetNull(int id);
-//    long findSportsmanResultTimeById(int id);
-//    Date findSportsmanReachDateById(int id);
     List<Sportsman> findAllToMakeAQueue(String style, int meters);
 }

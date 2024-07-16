@@ -1,10 +1,12 @@
 package com.example.practice.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class SportsmanDto {
     private String surname;
     private String name;

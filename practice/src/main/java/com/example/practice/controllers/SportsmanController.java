@@ -1,8 +1,6 @@
 package com.example.practice.controllers;
 
-import com.example.practice.dtos.QueueDto;
-import com.example.practice.dtos.SportsmanDto;
-import com.example.practice.dtos.TransferDto;
+import com.example.practice.dtos.*;
 import com.example.practice.entities.Style;
 import com.example.practice.mappers.StringToStyleMapper;
 import com.example.practice.services.SportsmanService;
@@ -17,7 +15,7 @@ public class SportsmanController {
     private SportsmanService sportsmanService;
 
     @PostMapping("/sportsman/add")
-    void addSportsman(@RequestBody SportsmanDto sportsmanDto){
+    void addSportsman(@RequestBody SportsmanDto sportsmanDto) {
         sportsmanService.addSportsman(sportsmanDto);
     }
 
@@ -31,6 +29,17 @@ public class SportsmanController {
     void transferSportsman(@RequestBody TransferDto transferDto) {
         sportsmanService.transferSportsman(transferDto);
     }
+
+    @PatchMapping("/sportsman/category/set")
+    void setNewCategory(@RequestBody NewCategoryDto newCategoryDto) {
+        sportsmanService.setNewCategory(newCategoryDto);
+    }
+
+    @PatchMapping("/sportsman/kick")
+    void updateSportsmanClubById(@RequestBody KickSportsmanDto kickSportsmanDto) {
+        sportsmanService.updateSportsmanClubSetNullById(kickSportsmanDto);
+    }
+
 }
 
 //{

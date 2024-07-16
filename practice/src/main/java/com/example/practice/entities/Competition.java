@@ -8,13 +8,13 @@ import java.util.Date;
 @Table(name = "competition")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Competition extends BaseEntity {
-    private Date startDate;
-    private Date endDate;
+    private long startDate;
+    private long endDate;
     private String place;
     private String name;
     private CompetitionStatus competitionStatus;
 
-    public Competition(Date startDate, Date endDate, String place, String name, CompetitionStatus competitionStatus) {
+    public Competition(long startDate, long endDate, String place, String name, CompetitionStatus competitionStatus) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.place = place;
@@ -25,20 +25,20 @@ public class Competition extends BaseEntity {
     }
 
     @Column(name = "start_date", nullable = false)
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
     @Column(name = "end_date", nullable = false)
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 

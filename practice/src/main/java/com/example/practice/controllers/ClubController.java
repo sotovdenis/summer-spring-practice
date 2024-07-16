@@ -32,6 +32,4 @@ public class ClubController {
     void addCoachToClub(@RequestBody AddCoachToClubDto addCoachToClubDto) {
         clubService.addCoachToClub(addCoachToClubDto);
     }
-
-
 }

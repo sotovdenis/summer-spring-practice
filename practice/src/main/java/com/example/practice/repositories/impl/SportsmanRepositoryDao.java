@@ -32,48 +32,11 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
         entityManager.persist(sportsman);
     }
 
-    @Transactional
-    public void deleteSportsman(int id) {
-        entityManager.remove(entityManager.find(Sportsman.class, id));
-    }
-
     @Override
     public Sportsman findSportsmanById(int id) {
         return entityManager.find(Sportsman.class, id);
     }
 
-//    @Override
-//    public List<Sportsman> findAllByCategory(Category category) {
-//        return baseSportsmanRepo.findAllByCategory(category);
-//    }
-
-//    @Override
-//    public List<Sportsman> findAllByEntryTimeAndBirthDate(long entry, Date birthDate, Gender gender) {
-//        return baseSportsmanRepo.findAllByEntryTimeAndBirthDate(entry, birthDate, gender);
-//    }
-
-    @Transactional
-    public void updateCategoryById(int id, Category category) {
-        Sportsman sportsman = entityManager.find(Sportsman.class, id);
-        sportsman.setCategory(category);
-        entityManager.merge(sportsman);
-    }
-
-    @Transactional
-    public void updateSportsmanClubSetNull(int id) {
-        Sportsman sportsman = entityManager.find(Sportsman.class, id);
-        sportsman.setClub(null);
-    }
-
-//    @Override
-//    public long findSportsmanResultTimeById(int id) {
-//        return baseSportsmanRepo.findSportsmanResultTimeById(id);
-//    }
-//
-//    @Override
-//    public Date findSportsmanReachDateById(int id) {
-//        return baseSportsmanRepo.findSportsmanReachDateById(id);
-//    }
 
     @Override
     public List<Sportsman> findAllToMakeAQueue(String style, int metres) {
@@ -83,8 +46,6 @@ public class SportsmanRepositoryDao implements SportsmanRepository {
 
 @Repository
 interface BaseSportsmanRepo extends JpaRepository<Sportsman, Integer> {
-
-    List<Sportsman> findAllByCategory(Category category);
 
     //Search for the sportsman with entry entryTime, birthday and gender to make a swimming queue
     @Query(value = "select s from Sportsman s join SportsmanDistance sd where sd.entryTimeInMilliseconds = :entry and s.birthDate = :birthDate and s.gender = :gender")

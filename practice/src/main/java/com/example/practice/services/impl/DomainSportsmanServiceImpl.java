@@ -1,15 +1,16 @@
 package com.example.practice.services.impl;
 
+import com.example.practice.dtos.KickSportsmanDto;
+import com.example.practice.dtos.NewCategoryDto;
 import com.example.practice.dtos.SportsmanDto;
 import com.example.practice.dtos.TransferDto;
 import com.example.practice.entities.*;
-import com.example.practice.exeptions.ClubHasCoachException;
-import com.example.practice.exeptions.CoachPointsException;
+import com.example.practice.exeptions.CategoryException;
 import com.example.practice.exeptions.NoCoachException;
-import com.example.practice.mappers.StringToStyleMapper;
 import com.example.practice.repositories.ClubRepository;
+import com.example.practice.repositories.CompetitionRepository;
+import com.example.practice.repositories.SportsmanDistanceRepository;
 import com.example.practice.repositories.SportsmanRepository;
-import com.example.practice.services.ClubService;
 import com.example.practice.services.SportsmanService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,58 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
     @Autowired
     private ClubRepository clubRepository;
 
+    @Autowired
+    private CompetitionRepository competitionRepository;
+
+    @Autowired
+    private SportsmanDistanceRepository sportsmanDistanceRepository;
+
     private final ModelMapper modelMapper = new ModelMapper();
 
+    private static boolean isSetCategory(Category category, int competitionPoint) {
+        boolean setCategory = false;
+
+        switch (category) {
+            case THIRDCHILD -> {
+                switch (competitionPoint) {
+                    case 0, 1, 2, 5, 4, 3 -> setCategory = true;
+                }
+            }
+            case SECONDCHILD -> {
+                switch (competitionPoint) {
+                    case 1, 2, 5, 4, 3 -> setCategory = true;
+                }
+            }
+            case FIRSTCHILD, THIRDADULT -> {
+                switch (competitionPoint) {
+                    case 2, 5, 4, 3 -> setCategory = true;
+                }
+            }
+            case FIRSTADULT, SECONDADULT, CMS -> {
+                switch (competitionPoint) {
+                    case 5, 4, 3 -> setCategory = true;
+                }
+            }
+            case MS, MSIC -> {
+                switch (competitionPoint) {
+                    case 5, 4 -> setCategory = true;
+                }
+            }
+            case MMS -> {
+                if (competitionPoint == 5) {
+                    setCategory = true;
+                }
+            }
+        }
+        return setCategory;
+    }
 
     @Override
-    public void deleteSportsmanById(int id) {
-        sportsmanRepository.deleteSportsman(id);
+    public void updateSportsmanClubSetNullById(KickSportsmanDto kickSportsmanDto) {
+        Sportsman sportsman =  sportsmanRepository.findSportsmanById(kickSportsmanDto.getId());
+        sportsman.setClub(null);
+
+        sportsmanRepository.addSportsman(sportsman);
     }
 
     @Override
@@ -61,20 +108,44 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         int nextClubId = transferDto.getNextClubId();
         int sportsmanId = transferDto.getId();
 
-
         if (sportsmanRepository.findSportsmanById(sportsmanId) == null) {
             throw new NoCoachException(sportsmanId);
         }
-
-        if (clubRepository.findClubById(nextClubId).getCoach() != null) {
-            throw new ClubHasCoachException(nextClubId);
-        }
-
 
         clubRepository.findClubById(prevClubId).setCoach(null);
         Sportsman sportsman = sportsmanRepository.findSportsmanById(sportsmanId);
         sportsman.setClub(clubRepository.findClubById(nextClubId));
 
         sportsmanRepository.addSportsman(sportsman);
+    }
+
+    @Override
+    public void setNewCategory(NewCategoryDto newCategoryDto) {
+
+        CompetitionStatus competitionStatus = competitionRepository.getCompetitionStatusById(newCategoryDto.getCompetitionId());
+        int sportsmanId = newCategoryDto.getSportsmanId();
+        Category category = Category.valueOf(newCategoryDto.getNewCategory());
+
+        int competitionPoint = 0;
+
+        switch (competitionStatus) {
+            case REGIONAL -> competitionPoint = 1;
+            case LOCAL -> competitionPoint = 2;
+            case DISTRICT -> competitionPoint = 3;
+            case COUNTRY -> competitionPoint = 4;
+            case WORLD -> competitionPoint = 5;
+        }
+
+        boolean setCategory = isSetCategory(category, competitionPoint);
+
+        Sportsman sportsman = sportsmanRepository.findSportsmanById(sportsmanId);
+
+        if (setCategory) {
+            sportsman.setCategory(category);
+        } else
+            throw new CategoryException(newCategoryDto.getCompetitionId(), sportsmanId);
+
+        sportsmanRepository.addSportsman(sportsman);
+
     }
 }
