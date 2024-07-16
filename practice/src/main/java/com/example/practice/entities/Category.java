@@ -14,6 +14,7 @@ public enum Category {
     MMS(10);
 
     private final int index;
+
     Category (int index){
         this.index = index;
     }

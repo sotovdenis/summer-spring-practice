@@ -1,7 +1,7 @@
 package com.example.practice.controllers;
 
-import com.example.practice.dtos.ClubDto;
-import com.example.practice.dtos.AddCoachToClubDto;
+import com.example.practice.dtos.club.ClubDto;
+import com.example.practice.dtos.coach.AddCoachToClubDto;
 import com.example.practice.dtos.TransferDto;
 import com.example.practice.services.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +32,5 @@ public class ClubController {
     void addCoachToClub(@RequestBody AddCoachToClubDto addCoachToClubDto) {
         clubService.addCoachToClub(addCoachToClubDto);
     }
+
 }

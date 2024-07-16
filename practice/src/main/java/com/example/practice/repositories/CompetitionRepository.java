@@ -14,8 +14,4 @@ public interface CompetitionRepository {
     Competition findCompetitionById(int id);
     void addCompetition(Competition competition);
     CompetitionStatus getCompetitionStatusById(int id);
-    //Competitions that can give new category
-    @Query(value = "select c from Competition c where c.competitionStatus = :competitionStatus")
-    List<Competition> findAllByCompetitionStatus(@Param(value = "competitionStatus") CompetitionStatus competitionStatus);
-
 }

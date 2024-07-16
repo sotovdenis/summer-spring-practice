@@ -1,6 +1,6 @@
 package com.example.practice.controllers;
 
-import com.example.practice.dtos.AddCompetitionDto;
+import com.example.practice.dtos.competition.AddCompetitionDto;
 import com.example.practice.services.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,4 +17,5 @@ public class CompetitionController {
     void createCompetition(@RequestBody AddCompetitionDto addCompetitionDto) {
         competitionService.addCompetition(addCompetitionDto);
     }
+
 }

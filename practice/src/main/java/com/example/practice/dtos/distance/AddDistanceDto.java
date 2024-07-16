@@ -1,13 +1,12 @@
-package com.example.practice.dtos;
+package com.example.practice.dtos.distance;
 
-import com.example.practice.entities.Competition;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class AddDistanceDto {
-    private int style;
+    private String style;
     private int meters;
     private int competitionId;
 }

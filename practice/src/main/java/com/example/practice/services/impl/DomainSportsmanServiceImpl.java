@@ -1,9 +1,9 @@
 package com.example.practice.services.impl;
 
-import com.example.practice.dtos.KickSportsmanDto;
-import com.example.practice.dtos.NewCategoryDto;
-import com.example.practice.dtos.SportsmanDto;
-import com.example.practice.dtos.TransferDto;
+import com.example.practice.dtos.*;
+import com.example.practice.dtos.sportsman.KickSportsmanDto;
+import com.example.practice.dtos.sportsman.NewCategoryDto;
+import com.example.practice.dtos.sportsman.SportsmanDto;
 import com.example.practice.entities.*;
 import com.example.practice.exeptions.CategoryException;
 import com.example.practice.exeptions.NoCoachException;
@@ -15,9 +15,6 @@ import com.example.practice.services.SportsmanService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class DomainSportsmanServiceImpl implements SportsmanService {
@@ -76,7 +73,7 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Override
     public void updateSportsmanClubSetNullById(KickSportsmanDto kickSportsmanDto) {
-        Sportsman sportsman =  sportsmanRepository.findSportsmanById(kickSportsmanDto.getId());
+        Sportsman sportsman = sportsmanRepository.findSportsmanById(kickSportsmanDto.getId());
         sportsman.setClub(null);
 
         sportsmanRepository.addSportsman(sportsman);
@@ -91,14 +88,6 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
         sportsmanRepository.addSportsman(sportsmanToAdd);
 
-    }
-
-    @Override
-    public List<SportsmanDto> findAllToMakeAQueue(String style, int meters) {
-        return sportsmanRepository.findAllToMakeAQueue(style, meters)
-                .stream()
-                .map(s -> modelMapper.map(s, SportsmanDto.class))
-                .collect(Collectors.toList());
     }
 
     @Override

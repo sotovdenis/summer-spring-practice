@@ -1,4 +1,4 @@
-package com.example.practice.dtos;
+package com.example.practice.dtos.club;
 
 import com.example.practice.entities.Coach;
 import lombok.Getter;

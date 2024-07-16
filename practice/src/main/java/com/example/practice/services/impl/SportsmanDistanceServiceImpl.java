@@ -1,7 +1,7 @@
 package com.example.practice.services.impl;
 
-import com.example.practice.dtos.AddSportsmanDistanceDto;
-import com.example.practice.dtos.AddSportsmanResultTimeDto;
+import com.example.practice.dtos.sportsman.AddSportsmanDistanceDto;
+import com.example.practice.dtos.sportsman.AddSportsmanResultTimeDto;
 import com.example.practice.entities.Distance;
 import com.example.practice.entities.Sportsman;
 import com.example.practice.entities.SportsmanDistance;
@@ -43,21 +43,6 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
         sportsmanDistanceRepository.addSportsmenDistance(sd);
     }
 
-//    @Override
-//    @Transactional
-//    public void addSportsmanEntryTime(SportsmanDistance sportsmanDistance) {
-//        sportsmanDistanceRepository.addSportsmanEntryTime(sportsmanDistance);
-//    }
-
-//    @Override
-//    public void setResultTime(AddSportsmanResultTimeDto dto) {
-//
-//        int id = dto.getSdId();
-//        long resultTime = dto.getResult();
-//
-//        sportsmanDistanceRepository.setResultTime(id, resultTime);
-//    }
-
     @Override
     public void addSportsmanDistance(AddSportsmanDistanceDto addSportsmanDistanceDto) {
         SportsmanDistance sd = modelMapper.map(addSportsmanDistanceDto, SportsmanDistance.class);
@@ -69,5 +54,4 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
 
         sportsmanDistanceRepository.addSportsmenDistance(sd);
     }
-
 }

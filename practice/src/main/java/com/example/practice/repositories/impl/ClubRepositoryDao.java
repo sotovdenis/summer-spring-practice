@@ -1,13 +1,9 @@
 package com.example.practice.repositories.impl;
 
-import com.example.practice.dtos.ClubDto;
-import com.example.practice.dtos.CoachDto;
 import com.example.practice.entities.Club;
-import com.example.practice.entities.Coach;
 import com.example.practice.repositories.ClubRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -46,13 +42,6 @@ public class ClubRepositoryDao implements ClubRepository {
     public Club findClubById(int id) {
         return entityManager.find(Club.class, id);
     }
-
-//    @Override
-//    public void updateCoach(int clubId, int coachId) {
-//        Club club = entityManager.find(Club.class, clubId);
-//        Coach coach = entityManager.find(Coach.class, coachId);
-//        club.setCoach(coach);
-//    }
 
 }
 

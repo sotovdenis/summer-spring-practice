@@ -1,6 +1,5 @@
-package com.example.practice.dtos;
+package com.example.practice.dtos.sportsman;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 

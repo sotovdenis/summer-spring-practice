@@ -1,7 +1,6 @@
 package com.example.practice.repositories.impl;
 
 import com.example.practice.entities.Distance;
-import com.example.practice.entities.Style;
 import com.example.practice.repositories.DistanceRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -29,7 +28,7 @@ public class DistanceRepositoryDao implements DistanceRepository {
     }
 
     @Override
-    public List<Distance> findAllByStyleAndMeters(Style style, int metres) {
+    public List<Distance> findAllByStyleAndMeters(int style, int metres) {
         return baseDistanceRepo.findAllByStyleAndMeters(style, metres);
     }
 
@@ -42,6 +41,6 @@ public class DistanceRepositoryDao implements DistanceRepository {
 @Repository
 interface BaseDistanceRepo extends JpaRepository<Distance, Integer> {
     @Query(value = "select d from Distance d where d.style = :style and d.meters = :metres")
-    List<Distance> findAllByStyleAndMeters(@Param(value = "style") Style style,
+    List<Distance> findAllByStyleAndMeters(@Param(value = "style") int style,
                                            @Param(value = "metres") int metres);
 }

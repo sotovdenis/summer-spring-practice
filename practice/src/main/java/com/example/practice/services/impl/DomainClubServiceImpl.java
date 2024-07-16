@@ -1,7 +1,7 @@
 package com.example.practice.services.impl;
 
-import com.example.practice.dtos.ClubDto;
-import com.example.practice.dtos.AddCoachToClubDto;
+import com.example.practice.dtos.club.ClubDto;
+import com.example.practice.dtos.coach.AddCoachToClubDto;
 import com.example.practice.dtos.TransferDto;
 import com.example.practice.entities.Club;
 import com.example.practice.entities.Coach;
@@ -56,11 +56,6 @@ public class DomainClubServiceImpl implements ClubService {
                 .stream()
                 .map((c -> modelMapper.map(c, ClubDto.class)))
                 .collect(Collectors.toList());
-    }
-
-    @Override
-    public int getPointsById(int id) {
-        return clubRepository.getPointsById(id);
     }
 
     @Override
