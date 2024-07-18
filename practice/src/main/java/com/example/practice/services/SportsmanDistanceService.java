@@ -7,7 +7,7 @@ import com.example.practice.entities.SportsmanDistance;
 import java.util.List;
 
 public interface SportsmanDistanceService {
-    List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime);
+//    List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime);
     void setResultTime(AddSportsmanResultTimeDto addSportsmanResultTimeDto);
     void addSportsmanDistance(AddSportsmanDistanceDto addSportsmanDistanceDto);
 }

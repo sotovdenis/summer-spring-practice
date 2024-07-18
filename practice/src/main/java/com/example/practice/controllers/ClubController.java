@@ -13,10 +13,10 @@ public class ClubController {
     @Autowired
     private ClubService clubService;
 
-    @GetMapping("/clubs/without-coach")
-    Iterable<ClubDto> clubsWhereCoachIsNull() {
-        return clubService.findAllByCoachIsNull();
-    }
+//    @GetMapping("/clubs/without-coach")
+//    Iterable<ClubDto> clubsWhereCoachIsNull() {
+//        return clubService.findAllByCoachIsNull();
+//    }
 
     @PostMapping("/clubs/add")
     void createClub(@RequestBody ClubDto newClub) {

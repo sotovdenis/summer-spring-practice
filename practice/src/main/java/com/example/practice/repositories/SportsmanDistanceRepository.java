@@ -7,7 +7,6 @@ import java.util.List;
 
 @Repository
 public interface SportsmanDistanceRepository {
-    List<SportsmanDistance> findAllByResultTimeInMilliseconds(long newTime);
     void addSportsmenDistance(SportsmanDistance sportsmanDistance);
     SportsmanDistance findSportsmanDistanceById(int id);
 }

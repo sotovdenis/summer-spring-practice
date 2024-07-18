@@ -26,11 +26,11 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
     private DistanceRepository distanceRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
-
-    @Override
-    public List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime) {
-        return sportsmanDistanceRepository.findAllByResultTimeInMilliseconds(resultTime);
-    }
+//
+//    @Override
+//    public List<SportsmanDistance> findAllByResultTimeInMilliseconds(long resultTime) {
+//        return sportsmanDistanceRepository.findAllByResultTimeInMilliseconds(resultTime);
+//    }
 
     @Override
     public void setResultTime(AddSportsmanResultTimeDto time) {
