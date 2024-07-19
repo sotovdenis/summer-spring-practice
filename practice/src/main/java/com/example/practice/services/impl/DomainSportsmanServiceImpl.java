@@ -12,6 +12,10 @@ import com.example.practice.repositories.ClubRepository;
 import com.example.practice.repositories.CompetitionRepository;
 import com.example.practice.repositories.SportsmanDistanceRepository;
 import com.example.practice.repositories.SportsmanRepository;
+import com.example.practice.repositories.impl.ClubRepositoryImpl;
+import com.example.practice.repositories.impl.CompetitionRepositoryImpl;
+import com.example.practice.repositories.impl.SportsmanDistanceRepositoryImpl;
+import com.example.practice.repositories.impl.SportsmanRepositoryImpl;
 import com.example.practice.services.SportsmanService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +25,13 @@ import org.springframework.stereotype.Service;
 public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Autowired
-    private SportsmanRepository sportsmanRepository;
+    private SportsmanRepositoryImpl sportsmanRepository;
 
     @Autowired
-    private ClubRepository clubRepository;
+    private ClubRepositoryImpl clubRepository;
 
     @Autowired
-    private CompetitionRepository competitionRepository;
-
-    @Autowired
-    private SportsmanDistanceRepository sportsmanDistanceRepository;
+    private CompetitionRepositoryImpl competitionRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -74,20 +75,20 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Override
     public void updateSportsmanClubSetNullById(KickSportsmanDto kickSportsmanDto) {
-        Sportsman sportsman = sportsmanRepository.findSportsmanById(kickSportsmanDto.getId());
+        Sportsman sportsman = sportsmanRepository.findById(Sportsman.class, kickSportsmanDto.getId());
         sportsman.setClub(null);
 
-        sportsmanRepository.addSportsman(sportsman);
+        sportsmanRepository.save(sportsman);
     }
 
     @Override
     public void addSportsman(SportsmanDto sportsmanDto) {
         Sportsman sportsmanToAdd = modelMapper.map(sportsmanDto, Sportsman.class);
 
-        Club club = clubRepository.findClubById(sportsmanDto.getClubId());
+        Club club = clubRepository.findById(Club.class, sportsmanDto.getClubId());
         sportsmanToAdd.setClub(club);
 
-        sportsmanRepository.addSportsman(sportsmanToAdd);
+        sportsmanRepository.save(sportsmanToAdd);
 
     }
 
@@ -98,15 +99,15 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         int nextClubId = transferDto.getNextClubId();
         int sportsmanId = transferDto.getId();
 
-        if (sportsmanRepository.findSportsmanById(sportsmanId) == null) {
+        if (sportsmanRepository.findById(Sportsman.class, sportsmanId) == null) {
             throw new NoSportsmanException(sportsmanId);
         }
 
-        clubRepository.findClubById(prevClubId).setCoach(null);
-        Sportsman sportsman = sportsmanRepository.findSportsmanById(sportsmanId);
-        sportsman.setClub(clubRepository.findClubById(nextClubId));
+        clubRepository.findById(Club.class, prevClubId).setCoach(null);
+        Sportsman sportsman = sportsmanRepository.findById(Sportsman.class, sportsmanId);
+        sportsman.setClub(clubRepository.findById(Club.class, nextClubId));
 
-        sportsmanRepository.addSportsman(sportsman);
+        sportsmanRepository.save(sportsman);
     }
 
     @Override
@@ -128,14 +129,14 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
         boolean setCategory = isSetCategory(category, competitionPoint);
 
-        Sportsman sportsman = sportsmanRepository.findSportsmanById(sportsmanId);
+        Sportsman sportsman = sportsmanRepository.findById(Sportsman.class, sportsmanId);
 
         if (setCategory) {
             sportsman.setCategory(category);
         } else
             throw new CategoryException(newCategoryDto.getCompetitionId(), sportsmanId);
 
-        sportsmanRepository.addSportsman(sportsman);
+        sportsmanRepository.save(sportsman);
 
     }
 }

@@ -6,13 +6,13 @@ import jakarta.transaction.Transactional;
 
 
 
-public abstract class BaseCrudRepo<E, T> {
+public abstract class BaseCRURepository<E, T> {
     private final Class<E> entityClass;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public BaseCrudRepo(Class<E> entity) {
+    public BaseCRURepository(Class<E> entity) {
         this.entityClass  = entity;
     }
 

@@ -10,6 +10,4 @@ import java.util.List;
 
 @Repository
 public interface DistanceRepository {
-    void addDistance(Distance distance);
-    Distance findDistanceById(int id);
 }

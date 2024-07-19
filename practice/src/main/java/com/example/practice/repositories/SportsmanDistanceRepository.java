@@ -7,6 +7,5 @@ import java.util.List;
 
 @Repository
 public interface SportsmanDistanceRepository {
-    void addSportsmenDistance(SportsmanDistance sportsmanDistance);
-    SportsmanDistance findSportsmanDistanceById(int id);
+
 }

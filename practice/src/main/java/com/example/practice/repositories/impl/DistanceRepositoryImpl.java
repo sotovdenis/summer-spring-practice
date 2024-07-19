@@ -1,14 +1,15 @@
 package com.example.practice.repositories.impl;
 
 import com.example.practice.entities.Distance;
-import com.example.practice.repositories.BaseCrudRepo;
+import com.example.practice.repositories.BaseCRRepository;
+import com.example.practice.repositories.BaseCRURepository;
 import com.example.practice.repositories.DistanceRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DistanceRepositoryImpl extends BaseCrudRepo<Distance, Integer> implements DistanceRepository {
+public class DistanceRepositoryImpl extends BaseCRRepository<Distance, Integer> implements DistanceRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -17,13 +18,4 @@ public class DistanceRepositoryImpl extends BaseCrudRepo<Distance, Integer> impl
         super(entity);
     }
 
-    @Override
-    public void addDistance(Distance distance) {
-        entityManager.persist(distance);
-    }
-
-    @Override
-    public Distance findDistanceById(int id) {
-        return entityManager.find(Distance.class, id);
-    }
 }

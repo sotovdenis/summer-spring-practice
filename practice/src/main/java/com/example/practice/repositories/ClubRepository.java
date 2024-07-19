@@ -8,6 +8,5 @@ import java.util.List;
 @Repository
 public interface ClubRepository {
     void save(Club club);
-    Club findClubById(int id);
     void update(Club club);
 }

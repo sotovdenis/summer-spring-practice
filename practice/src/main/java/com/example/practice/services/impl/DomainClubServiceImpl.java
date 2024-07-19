@@ -8,8 +8,9 @@ import com.example.practice.entities.Coach;
 import com.example.practice.exeptions.ClubHasCoachException;
 import com.example.practice.exeptions.CoachPointsException;
 import com.example.practice.exeptions.NoCoachException;
-import com.example.practice.repositories.ClubRepository;
 import com.example.practice.repositories.CoachRepository;
+import com.example.practice.repositories.impl.ClubRepositoryImpl;
+import com.example.practice.repositories.impl.CoachRepositoryImpl;
 import com.example.practice.services.ClubService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +20,16 @@ import org.springframework.stereotype.Service;
 public class DomainClubServiceImpl implements ClubService {
 
     @Autowired
-    private ClubRepository clubRepository;
+    private ClubRepositoryImpl clubRepository;
     @Autowired
-    private CoachRepository coachRepository;
+    private CoachRepositoryImpl coachRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
 
     @Override
     public void addClub(ClubDto clubDto) {
-        Coach coach = coachRepository.findCoachById(clubDto.getCoachId());
+        Coach coach = coachRepository.findById(Coach.class, clubDto.getCoachId());
 
         Club club = modelMapper.map(clubDto, Club.class);
 
@@ -41,8 +42,8 @@ public class DomainClubServiceImpl implements ClubService {
         int clubId = addCoachToClubDto.getClubId();
         int coachId = addCoachToClubDto.getCoachId();
 
-        Club club =  clubRepository.findClubById(clubId);
-        club.setCoach(coachRepository.findCoachById(coachId));
+        Club club = clubRepository.findById(Club.class, clubId);
+        club.setCoach(coachRepository.findById(Coach.class, coachId));
 
         clubRepository.save(club);
     }
@@ -55,21 +56,21 @@ public class DomainClubServiceImpl implements ClubService {
         int coachId = transferDto.getId();
 
 
-        if (clubRepository.findClubById(prevClubId).getCoach() == null) {
+        if (clubRepository.findById(Club.class, prevClubId).getCoach() == null) {
             throw new NoCoachException(coachId);
         }
 
-        if (clubRepository.findClubById(nextClubId).getCoach() != null) {
+        if (clubRepository.findById(Club.class, nextClubId).getCoach() != null) {
             throw new ClubHasCoachException(nextClubId);
         }
 
-        if (clubRepository.findClubById(nextClubId).getPoints() > coachRepository.findCoachPointsById(coachId)) {
+        if (clubRepository.findById(Club.class, nextClubId).getPoints() > coachRepository.findCoachPointsById(coachId)) {
             throw new CoachPointsException(coachId);
         }
 
-        clubRepository.findClubById(prevClubId).setCoach(null);
-        Club club =  clubRepository.findClubById(nextClubId);
-        club.setCoach(coachRepository.findCoachById(coachId));
+        clubRepository.findById(Club.class, prevClubId).setCoach(null);
+        Club club = clubRepository.findById(Club.class, nextClubId);
+        club.setCoach(coachRepository.findById(Coach.class, coachId));
 
         clubRepository.save(club);
     }

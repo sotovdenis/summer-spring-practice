@@ -16,7 +16,7 @@ import java.util.List;
 public class CompetitionServiceImpl implements CompetitionService {
 
     @Autowired
-    private CompetitionRepository competitionRepository;
+    private CompetitionRepositoryImpl competitionRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -24,7 +24,7 @@ public class CompetitionServiceImpl implements CompetitionService {
     @Override
     public void addCompetition(AddCompetitionDto addCompetitionDto) {
         Competition competition = modelMapper.map(addCompetitionDto, Competition.class);
-        competitionRepository.addCompetition(competition);
+        competitionRepository.save(competition);
     }
 
 }

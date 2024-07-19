@@ -21,7 +21,7 @@ public class CoachServiceImpl implements CoachService {
     public void addCoach(CoachDto coach) {
         Coach coachToAdd = modelMapper.map(coach, Coach.class);
 
-        coachRepository.addCoach(coachToAdd);
+        coachRepository.save(coachToAdd);
     }
 
 }

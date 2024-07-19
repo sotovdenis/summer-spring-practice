@@ -8,6 +8,5 @@ import java.util.Queue;
 
 @Repository
 public interface SportsmanRepository {
-    void addSportsman(Sportsman sportsman);
-    Sportsman findSportsmanById(int id);
+
 }
