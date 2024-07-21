@@ -45,7 +45,7 @@ public class DomainClubServiceImpl implements ClubService {
         Club club = clubRepository.findById(Club.class, clubId);
         club.setCoach(coachRepository.findById(Coach.class, coachId));
 
-        clubRepository.save(club);
+        clubRepository.update(club);
     }
 
     @Override
@@ -72,6 +72,6 @@ public class DomainClubServiceImpl implements ClubService {
         Club club = clubRepository.findById(Club.class, nextClubId);
         club.setCoach(coachRepository.findById(Coach.class, coachId));
 
-        clubRepository.save(club);
+        clubRepository.update(club);
     }
 }

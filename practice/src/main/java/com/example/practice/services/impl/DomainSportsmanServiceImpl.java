@@ -78,7 +78,7 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         Sportsman sportsman = sportsmanRepository.findById(Sportsman.class, kickSportsmanDto.getId());
         sportsman.setClub(null);
 
-        sportsmanRepository.save(sportsman);
+        sportsmanRepository.update(sportsman);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         Sportsman sportsman = sportsmanRepository.findById(Sportsman.class, sportsmanId);
         sportsman.setClub(clubRepository.findById(Club.class, nextClubId));
 
-        sportsmanRepository.save(sportsman);
+        sportsmanRepository.update(sportsman);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         } else
             throw new CategoryException(newCategoryDto.getCompetitionId(), sportsmanId);
 
-        sportsmanRepository.save(sportsman);
+        sportsmanRepository.update(sportsman);
 
     }
 }

@@ -43,7 +43,7 @@ public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
         SportsmanDistance sd = sportsmanDistanceRepository.findById(SportsmanDistance.class, sdId);
         sd.setResultTimeInMilliseconds(resultTimeInMilliseconds);
 
-        sportsmanDistanceRepository.save(sd);
+        sportsmanDistanceRepository.update(sd);
     }
 
     @Override
