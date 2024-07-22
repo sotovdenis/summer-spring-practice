@@ -21,6 +21,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class DomainSportsmanServiceImpl implements SportsmanService {
 
@@ -138,5 +141,14 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
         sportsmanRepository.update(sportsman);
 
+    }
+
+    @Override
+    public List<QueueAllDto> makeAQueue(QueueDto queueDto) {
+
+        return sportsmanRepository.makeAQueue(queueDto.getStyle(), queueDto.getMeters())
+                .stream()
+                .map(s -> modelMapper.map(s, QueueAllDto.class))
+                .collect(Collectors.toList());
     }
 }

@@ -8,6 +8,8 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public class SportsmanRepositoryImpl extends BaseCRURepository<Sportsman, Integer> implements SportsmanRepository {
 
@@ -18,4 +20,15 @@ public class SportsmanRepositoryImpl extends BaseCRURepository<Sportsman, Intege
         super(entity);
     }
 
+    @Override
+    public List<Queue> makeAQueue(int style, int meters) {
+        return entityManager.createQuery("select s.surname, s.name, s.patronymic, cl.town, sd.entryTimeInMilliseconds, d.style from Sportsman s "+
+                "join SportsmanDistance sd on s.id = sd.sportsman.id "+
+                "join Distance d on sd.distance.id = d.id "+
+                "left join Club  cl on s.club.id = cl.id "+
+                "where d.style = :style and d.meters = :meters", Queue.class)
+                .setParameter("style", style)
+                .setParameter("meters", meters)
+                .getResultList();
+    }
 }
