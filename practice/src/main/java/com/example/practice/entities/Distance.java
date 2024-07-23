@@ -6,11 +6,11 @@ import jakarta.persistence.*;
 @Table(name = "distance")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Distance extends BaseEntity {
-    private Style style;
+    private String style;
     private int meters;
     private Competition competition;
 
-    public Distance(Style style, int meters, Competition competition) {
+    public Distance(String style, int meters, Competition competition) {
         this.style = style;
         this.meters = meters;
         this.competition = competition;
@@ -19,11 +19,11 @@ public class Distance extends BaseEntity {
     }
 
     @Column(name = "style", nullable = false)
-    public Style getStyle() {
+    public String getStyle() {
         return style;
     }
 
-    public void setStyle(Style style) {
+    public void setStyle(String style) {
         this.style = style;
     }
 

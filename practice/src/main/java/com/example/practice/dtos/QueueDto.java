@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class QueueDto {
-    private int style;
+    private String style;
     private int meters;
 }

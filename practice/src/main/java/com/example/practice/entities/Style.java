@@ -1,8 +1,5 @@
 package com.example.practice.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 public enum Style {
 
     BUTTERFLY(0),

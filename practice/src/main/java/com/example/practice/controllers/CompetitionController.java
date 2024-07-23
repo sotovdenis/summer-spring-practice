@@ -23,7 +23,7 @@ public class CompetitionController {
     }
 
     @GetMapping("/competition/queue")
-    Iterable<QueueAllDto> makeAQueue(@RequestParam(required = false) int style, @RequestParam(required = false) int meters) {
+    Iterable<QueueAllDto> makeAQueue(@RequestParam(required = false) String style, @RequestParam(required = false) int meters) {
         QueueDto queueDto = new QueueDto(style, meters);
         return sportsmanService.makeAQueue(queueDto);
     }

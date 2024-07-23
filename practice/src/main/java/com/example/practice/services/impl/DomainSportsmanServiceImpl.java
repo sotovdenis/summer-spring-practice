@@ -145,6 +145,16 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Override
     public List<QueueAllDto> makeAQueue(QueueDto queueDto) {
+//        Style style = null;
+//        switch (queueDto.getStyle()){
+//            case 0 -> style = Style.BUTTERFLY;
+//            case 1 -> style = Style.BACKSTROKE;
+//            case 2 -> style = Style.CRAWL;
+//            case 3 -> style = Style.BREASTSTROKE;
+//            case 4 -> style = Style.MEDLEY;
+//        }
+//
+//        assert style != null;
 
         return sportsmanRepository.makeAQueue(queueDto.getStyle(), queueDto.getMeters())
                 .stream()
