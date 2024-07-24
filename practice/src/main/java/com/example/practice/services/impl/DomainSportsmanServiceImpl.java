@@ -21,6 +21,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -159,6 +160,6 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
         return sportsmanRepository.makeAQueue(queueDto.getStyle(), queueDto.getMeters())
                 .stream()
                 .map(s -> modelMapper.map(s, QueueAllDto.class))
-                .collect(Collectors.toList());
+                .toList();
     }
 }
