@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class SportsmanRepositoryImpl extends BaseCRURepository<Sportsman, Integer> implements SportsmanRepository {
+public class SportsmanRepositoryImpl extends BaseCRURepository<Sportsman> implements SportsmanRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

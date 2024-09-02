@@ -22,11 +22,11 @@ import java.util.List;
 public class SportsmanDistanceServiceImpl implements SportsmanDistanceService {
 
     @Autowired
-    private SportsmanDistanceRepositoryImpl sportsmanDistanceRepository;
+    private SportsmanDistanceRepository sportsmanDistanceRepository;
     @Autowired
-    private SportsmanRepositoryImpl sportsmanRepository;
+    private SportsmanRepository sportsmanRepository;
     @Autowired
-    private DistanceRepositoryImpl distanceRepository;
+    private DistanceRepository distanceRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 //

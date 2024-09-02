@@ -8,10 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SportsmanDistanceRepositoryImpl extends BaseCRURepository<SportsmanDistance, Integer> implements SportsmanDistanceRepository {
-
-    @PersistenceContext
-    private EntityManager entityManager;
+public class SportsmanDistanceRepositoryImpl extends BaseCRURepository<SportsmanDistance> implements SportsmanDistanceRepository {
 
     public SportsmanDistanceRepositoryImpl(Class<SportsmanDistance> entity) {
         super(entity);

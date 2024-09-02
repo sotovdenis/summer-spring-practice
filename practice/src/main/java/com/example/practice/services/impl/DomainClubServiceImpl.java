@@ -8,6 +8,7 @@ import com.example.practice.entities.Coach;
 import com.example.practice.exeptions.ClubHasCoachException;
 import com.example.practice.exeptions.CoachPointsException;
 import com.example.practice.exeptions.NoCoachException;
+import com.example.practice.repositories.ClubRepository;
 import com.example.practice.repositories.CoachRepository;
 import com.example.practice.repositories.impl.ClubRepositoryImpl;
 import com.example.practice.repositories.impl.CoachRepositoryImpl;
@@ -20,9 +21,9 @@ import org.springframework.stereotype.Service;
 public class DomainClubServiceImpl implements ClubService {
 
     @Autowired
-    private ClubRepositoryImpl clubRepository;
+    private ClubRepository clubRepository;
     @Autowired
-    private CoachRepositoryImpl coachRepository;
+    private CoachRepository coachRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 

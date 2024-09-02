@@ -6,7 +6,8 @@ import jakarta.transaction.Transactional;
 
 
 
-public abstract class BaseCRURepository<E, T> {
+public abstract class BaseCRURepository<E> {
+
     private final Class<E> entityClass;
 
     @PersistenceContext

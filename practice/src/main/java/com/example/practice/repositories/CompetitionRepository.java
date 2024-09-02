@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface CompetitionRepository {
     CompetitionStatus getCompetitionStatusById(int id);
+    void save(Competition competition);
+    Competition findById(Class<Competition> competitionClass, int competitionId);
 }

@@ -10,7 +10,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CompetitionRepositoryImpl extends BaseCRRepository<Competition, Integer> implements CompetitionRepository {
+public class CompetitionRepositoryImpl extends BaseCRRepository<Competition> implements CompetitionRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -8,10 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ClubRepositoryImpl extends BaseCRURepository<Club, Integer> implements ClubRepository {
-
-    @PersistenceContext
-    private EntityManager entityManager;
+public class ClubRepositoryImpl extends BaseCRURepository<Club> implements ClubRepository {
 
     public ClubRepositoryImpl(Class<Club> entity) {
         super(entity);

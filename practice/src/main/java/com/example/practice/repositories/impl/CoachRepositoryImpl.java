@@ -8,7 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CoachRepositoryImpl extends BaseCRURepository<Coach, Integer> implements CoachRepository {
+public class CoachRepositoryImpl extends BaseCRURepository<Coach> implements CoachRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

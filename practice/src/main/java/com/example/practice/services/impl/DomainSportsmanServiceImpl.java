@@ -29,13 +29,13 @@ import java.util.stream.Collectors;
 public class DomainSportsmanServiceImpl implements SportsmanService {
 
     @Autowired
-    private SportsmanRepositoryImpl sportsmanRepository;
+    private SportsmanRepository sportsmanRepository;
 
     @Autowired
-    private ClubRepositoryImpl clubRepository;
+    private ClubRepository clubRepository;
 
     @Autowired
-    private CompetitionRepositoryImpl competitionRepository;
+    private CompetitionRepository competitionRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 
@@ -156,6 +156,16 @@ public class DomainSportsmanServiceImpl implements SportsmanService {
 //        }
 //
 //        assert style != null;
+
+        //        return entityManager.createQuery("select s.surname, s.name, s.patronymic, cl.town, sd.entryTimeInMilliseconds, d.style from Sportsman s " +
+//                        "join SportsmanDistance sd on s.id = sd.sportsman.id " +
+//                        "join Distance d on sd.distance.id = d.id " +
+//                        "left join Club  cl on s.club.id = cl.id " +
+//                        "where d.style = :style and d.meters = :meters", Queue.class)
+//                .setParameter("style", style)
+//                .setParameter("meters", meters).getResultStream().toList();
+
+
 
         return sportsmanRepository.makeAQueue(queueDto.getStyle(), queueDto.getMeters())
                 .stream()

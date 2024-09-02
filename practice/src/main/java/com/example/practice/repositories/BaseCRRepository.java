@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
-public abstract class BaseCRRepository<E, T> {
+public abstract class BaseCRRepository<E> {
 
     private final Class<E> entityClass;
 

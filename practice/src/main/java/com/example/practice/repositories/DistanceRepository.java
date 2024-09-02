@@ -10,4 +10,6 @@ import java.util.List;
 
 @Repository
 public interface DistanceRepository {
+    void save(Distance distance);
+    Distance findById(Class<Distance> distanceClass, int distanceId);
 }

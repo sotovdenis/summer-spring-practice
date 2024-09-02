@@ -16,7 +16,7 @@ import java.util.List;
 public class CompetitionServiceImpl implements CompetitionService {
 
     @Autowired
-    private CompetitionRepositoryImpl competitionRepository;
+    private CompetitionRepository competitionRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
 

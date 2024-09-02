@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class CoachServiceImpl implements CoachService {
 
     @Autowired
-    private CoachRepositoryImpl coachRepository;
+    private CoachRepository coachRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
 

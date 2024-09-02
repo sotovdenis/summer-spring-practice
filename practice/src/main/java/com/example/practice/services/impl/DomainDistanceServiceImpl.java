@@ -16,9 +16,9 @@ import org.springframework.stereotype.Service;
 public class DomainDistanceServiceImpl implements DistanceService {
 
     @Autowired
-    private DistanceRepositoryImpl distanceRepository;
+    private DistanceRepository distanceRepository;
     @Autowired
-    private CompetitionRepositoryImpl competitionRepository;
+    private CompetitionRepository competitionRepository;
 
     private final ModelMapper modelMapper = new ModelMapper();
 

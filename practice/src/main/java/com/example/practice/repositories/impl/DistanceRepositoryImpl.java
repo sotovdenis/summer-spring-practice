@@ -9,10 +9,7 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DistanceRepositoryImpl extends BaseCRRepository<Distance, Integer> implements DistanceRepository {
-
-    @PersistenceContext
-    private EntityManager entityManager;
+public class DistanceRepositoryImpl extends BaseCRRepository<Distance> implements DistanceRepository {
 
     public DistanceRepositoryImpl(Class<Distance> entity) {
         super(entity);
